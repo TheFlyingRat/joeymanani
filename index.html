@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Joey Manani</title>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://cdn.theflyingrat.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="name" content="Links - TheFlyingRat">
+    <meta name="description" content="Joey Manani | Software Developer">
+    <meta name="keywords" content="TheFlyingRat, Joey M, Software Developer, Web Development, Scripting languages, The, Flying, Rat, socials, youtube, snapchat, github">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="application-name" content="Links - TheFlyingRat">
+    <meta name="theme-color" content="#1e1e1e">
+    <meta name="author" content="https://cdn.theflyingrat.com/humans.txt">
+    <link rel="icon" type="image/png" href="https://cdn.theflyingrat.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" href="https://cdn.theflyingrat.com/favicon-16x16.png">
+    <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
+    <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
+    <link rel="stylesheet" href="/assets/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="shell" class="shell">
+        <div id="ssh-message">
+        Linux joeymanani 16.53.2 #1 Thu Jan 5 12:03:08 GMT 2023 x86_64 <!-- todo actual age n date -->
+        <br><br>
+        The programs included with the Debian GNU/Linux system are free software;<br>
+        the exact distribution terms for each program are described in the<br>
+        individual files in /usr/share/doc/*/copyright.
+        <br><br>
+        Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent<br>
+        permitted by applicable law.
+        <br>
+        </div>
+        <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ joey --version
+        <p>Joey 16.10.5</p> <!-- todo make this my years.month.days age -->
+        <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ whereis joey
+        <p>joey: /earth/australia/victoria</p>
+        <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ joey --help
+        <p>Usage: joey [options]</p>
+        <p>Options:</p>
+        <div class="shell-options">
+        <p>  --version</p>
+        <p>  --help</p>
+        <p>  --force-update</p>
+        <p>  --load</p>
+        </div>
+        <br>
+        <p>You are running Joey 16.10.5</p>
+        <p>Made with love</p>
+        <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="shell-placeholder"></span><span id="shell-cursor">_</span>
+        <br>
+        <span id="shell-response"></span>
+    </div>
+
+
+
+    <div id="heading" class="heading hidden">
+        <div class="title">
+            <span id="title-placeholder"></span><span id="typing-cursor" class="typing-cursor-animation">|</span>
+        </div>
+    </div>
+
+    <script src="/assets/typingAnimation.js"></script>
+    <script src="/assets/animations.js"></script>
+    <script>
+        async function playAnimations() {
+            await sleep(1500);
+            await playShellAnimation();
+            await sleep(400);
+            await playTypingAnimation();
+        }
+
+        playAnimations();
+    </script>
+
+</body>
+</html>
