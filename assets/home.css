@@ -1,58 +1,80 @@
-html, body {
-    background-color: #121212;
+/* no scrollbar */
+::-webkit-scrollbar {
+    display:none !important;
+  }
+
+
+body {
     color: #ddd;
-}
+    font-family: Inter, Arial, sans-serif;
 
-.heading {
-    display: grid;
-    height: 100vh;
-    width: 100vw;
-    justify-content: center;
-    align-content: center;
-}
-
-.shell {
-    height: 100vh;
-    width: 100vw;
-    font-family: 'Source Code Pro', monospace;
-}
-
-.shell > p, .shell > * > p {
-    margin-bottom: 0px;
-}
-
-.shell-options > p {
-    padding-left: 2em;
-}
-
-.shell > .green {
-    color: #79dd33;
-}
-
-.shell > .blue {
-    color: #3d5e82;
-}
-
-.heading > .title {
-    font-size: 44pt;
-    font-family: 'Source Code Pro', monospace;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 4%;
 }
 
 
-.typing-cursor-animation {
-    animation: blink-caret 1s step-end infinite;
+.code-comment {
+    font-size: 2.2rem !important;
+    color: gray;
+    font-family: monospace !important;;
+    width: fit-content;
 }
 
-.hidden {
-    display: none;
+.content > a {
+    display: block;
+    line-height: 8vh;
+    text-decoration: none;
 }
 
-@keyframes blink-caret {
-    from, to {
-        opacity: 0%;
+.content > a:hover {
+    color: gray;
+    cursor: default !important;;
+}
+
+.content a:hover,
+.content a.current {
+  font-size: larger;
+}
+
+
+i {
+    transition: opacity 0.08s ease-in-out;
+    display: inline;
+}
+
+
+
+@media only screen and (max-width: 920px) {
+   
+    body {
+        margin-left: 10%;
+        margin-right: 0%;
     }
-    50% {
-        opacity: 100%;
+
+    .code-comment {
+        font-size: 1.6rem !important;
     }
+
+    .content > a {
+        line-height: 5vh;
+    }
+
+
 }
 
+@media only screen and (max-width: 915px) and (min-width: 560px) {
+    body {
+        margin-left: 20%;
+        margin-right: 0%;
+    }
+
+    .code-comment {
+        font-size: 1.9rem !important;
+    }
+
+    .content > a {
+        line-height: 6.5vh;
+    }
+
+}

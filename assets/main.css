@@ -1,0 +1,34 @@
+/* Also make this mobile friendly */
+
+html, body {
+    background-color: #121212;
+    color: #ddd;
+}
+
+.hidden {
+    display: none;
+}
+
+.logo {
+    width: 8%;
+    min-width: 90px;
+}
+
+
+.titlebar {
+    display: flex;
+    width: 100%;
+    height: 8%;
+}
+
+
+.invisible {
+    opacity: 0%;
+}
+
+
+body {
+    height: 100vh;
+    padding: 12px;
+    overflow:hidden;
+}

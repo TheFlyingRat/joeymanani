@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
+    <script src="https://cdn.theflyingrat.com/assets/js/smoothScroll.min.js"></script>
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            opacity: 0;
+            transition: opacity 600ms;
+        }
+    </style>
+</head>
+<body id="body-container">
+    <div id="main">
+        <main>
+            <div class="content">
+                <h1>Joey Manani</h1>
+                <a href="/developer/" class="code-comment"><i class="fa-sharp fa-solid fa-arrow-right"></i> Software Developer</a>
+                <a href="/about/" class="code-comment"><i class="fa-sharp fa-solid fa-arrow-right invisible"></i> About Me</a>
+                <a href="/experience/" class="code-comment"><i class="fa-sharp fa-solid fa-arrow-right invisible"></i> Experience & Achievements</a>
+                <a href="/projects/" class="code-comment"><i class="fa-sharp fa-solid fa-arrow-right invisible"></i> Projects & Work</a>
+            </div>
+        </main>
+    </div>
+
+
+    <script>
+
+        new smoothScroll(document, 50, 30);
+
+
+        window.onload = function() {
+            document.getElementById("body-container").style.opacity = 1;
+        } 
+    
+        // Get the links from the page
+        const links = document.querySelectorAll('.content a');
+
+        // Current link index that the mouse is at (0,1,2,3 thus 4 links)
+        let currentLinkIndex = 0;
+        
+        // Listen for a keydown event
+        document.addEventListener('keydown', event => {
+          // Prevent arrow keys scrolling down the page (default behavior) 
+          event.preventDefault();
+          // If down arrow pressed
+          if (event.key === 'ArrowDown') {
+            // Do this stuff, self explanatory
+            playSound("click");
+            hideArrow(links[currentLinkIndex]);
+            currentLinkIndex = (currentLinkIndex + 1) % links.length;
+            showArrow(links[currentLinkIndex]);
+          } else if (event.key === 'ArrowUp') {
+            // Otherwise if arrow up is pressed do this stuff, self explanatory
+            playSound("click");
+            hideArrow(links[currentLinkIndex]);
+            currentLinkIndex = (currentLinkIndex - 1 + links.length) % links.length;
+            showArrow(links[currentLinkIndex]);
+          } else if (event.key === 'Tab') {
+            playSound("click");
+            hideArrow(links[currentLinkIndex]);
+            currentLinkIndex = (currentLinkIndex + 1) % links.length;
+            showArrow(links[currentLinkIndex]);
+          } else if (event.key === 'Enter') {
+            // However if enter was pressed, redirect to the highlighted link
+            playSound("success");
+            setTimeout(() => {
+                window.location.href = links[currentLinkIndex].href;
+              }, 1500);
+          }
+        });
+        
+
+        // Do this stuff for each of the links
+        links.forEach((link, index) => {
+          // Listens for a mouse click
+          link.addEventListener('click', event => {
+            // Prevent arrow keys scrolling down the page (default behavior)
+            event.preventDefault();
+            // Self explanatory
+            hideArrow(links[currentLinkIndex]);
+            currentLinkIndex = index;
+            showArrow(links[currentLinkIndex]);
+            playSound("success");
+            setTimeout(() => {
+              window.location.href = link.href;
+            }, 1500);
+          });
+          // Listens for the mouse to go over it
+          link.addEventListener('mouseover', event => {
+            // Self explanatory
+            hideArrow(links[currentLinkIndex]);
+            currentLinkIndex = index;
+            showArrow(links[currentLinkIndex]);
+            playSound("click");
+          });
+        });
+
+
+        function hideArrow(link) {
+            link.querySelector('i').style.opacity = 0;
+            link.classList.remove('current');
+        }
+        
+            function showArrow(link) {
+            link.querySelector('i').style.opacity = 1;
+            link.classList.add('current');
+        }
+        
+        function playSound(sound) {
+          const audio = new Audio('/assets/' + sound + '.wav');
+          console.log("audio played")
+          audio.play();
+        }
+
+    </script>
+</body>
+</html>

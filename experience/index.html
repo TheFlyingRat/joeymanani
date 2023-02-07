@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
+    <script src="https://cdn.theflyingrat.com/assets/js/smoothScroll.min.js"></script>
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/experience.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            opacity: 0;
+            transition: opacity 600ms;
+        }
+    </style>
+</head>
+<body id="body-container">
+    <div id="main">
+        <div class="titlebar">
+            <img src="/assets/logo.png" class="logo">
+        </div>
+
+        <div class="content">
+            <table class="experience-table">
+                    <tr class="table-heading">
+                        <td class="experience-year"></td>
+                        <td class="stay-there">
+                            <h1>Experience & Achievements</h1>
+                        </td>
+                    </tr>
+                    <tr id="2023">
+                        <td class="experience-year">
+                            <a href="#2023" class="fa-solid fa-circle"></a>
+                            <div class="line"></div>
+                        </td>
+                        <td>
+                            <h5>2023</h5>
+                            <p>I started learning C# and plan to develop Windows as well as mobile apps</p>
+                        </td>
+                    </tr>
+                    <tr id="2022">
+                        <td class="experience-year">
+                            <a href="#2022" class="fa-solid fa-circle"></a>
+                            <div class="line"></div>
+                        </td>
+                        <td>
+                            <h5>2022</h5>
+                            <p>I became advanced in the Python programming language</p>
+                            <p>Released version 6 of my personal website introducing very advanced CSS, JavaScript and optimized HTML</p>
+                        </td>
+                    </tr>
+                    <tr id="2021">
+                        <td class="experience-year">
+                            <a href="#2021" class="fa-solid fa-circle"></a>
+                            <div class="line"></div>
+                        </td>
+                        <td>
+                            <h5>2021</h5>
+                            <p>I started developing my online portfolio for professional use</p>
+                            <p>I placed first in an Australian national Python competition (Grok Learning)</p>
+                            <p>Received the St John Ambulance First Aid Certificate for basic emergency life support & cardiopulmonary resuscitation</p>
+                            <p>Released version 5 of my personal website simplifying it and making it aesthetically pleasing</p>
+                        </td>
+                    </tr>
+                    <tr id="2020">
+                        <td class="experience-year">
+                            <a href="#2020" class="fa-solid fa-circle"></a>
+                            <div class="line"></div>
+                        </td>
+                        <td>
+                            <h5>2020</h5>
+                            <p>I started learning the Python programming language by building a Discord bot</p>
+                            <p>I began working with Raspberry Pi's and electrical engineering</p>
+                            <p>Released revision 4 of my personal website, this time more of a backend update than a frontend utilizing a database and PHP</p>
+                        </td>
+                    </tr>
+                    <tr id="2019">
+                        <td class="experience-year">
+                            <a href="#2019" class="fa-solid fa-circle"></a>
+                            <div class="line"></div>
+                        </td>
+                        <td>
+                            <h5>2019</h5>
+                            <p>Achieved 5th place in RoboCup state-wide Robotics Competition held in Melbourne, Australia</p>
+                            <p>Started revision 3 of my personal website, a modified template which used high contrast and advanced HTML features</p>
+                            <p>Expanded my web development knowledge by including JavaScript and advanced CSS in my projects</p>
+                        </td>
+                    </tr>
+                    <tr id="2018">
+                        <td class="experience-year">
+                            <a href="#2018" class="fa-solid fa-circle"></a>
+                            <div class="line"></div>
+                        </td>
+                        <td>
+                            <h5>2018</h5>
+                            <p>RoboCup Mentor Award – Helping other students succeed in their robot builds and programs</p>
+                            <p>2nd place in RoboCup Robotics Competition – Building and programming a robot to follow a predetermined course and overcome obstacles in its path</p>
+                        </td>
+                    </tr>
+                    <tr id="2017">
+                        <td class="experience-year">
+                            <a href="#2017" class="fa-solid fa-circle"></a>
+                            <div class="line"></div>
+                        </td>
+                        <td>
+                            <h5>2017</h5>
+                            <p>Started exploring robotics and their uses</p>
+                            <p>Experimented with Lego's EV3 robotics kit and made a working black and white printer</p>
+                            <p>Released revision 2 of my personal website with basic styles and HTML, a cream colored background with black text</p>
+                        </td>
+                    </tr>
+                    <tr id="2016">
+                        <td class="experience-year">
+                            <a href="#2016" class="fa-solid fa-circle"></a>
+                            <div class="line curved dotted "></div>
+                        </td>
+                        <td style="padding-bottom: 100vh">
+                            <h5>2016</h5>
+                            <p>Started my web development journey</p>
+                            <p>Found my identity by fiddling with computers and making cool things happen</p>
+                            <p>Released revision 1 of my personal website - literally a coming soon page and figuring out how to make my website public</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>  
+        </div>
+        
+
+
+    <script>
+
+        new smoothScroll(document, 50, 30);
+
+
+        window.onload = function() {
+            document.getElementById("body-container").style.opacity = 1;
+        }
+        
+        const $elems = document.querySelectorAll('.experience-year a')
+        var elems = Array.from($elems)
+        elems.map(a => {
+          a.onclick = (e) => {
+            e.preventDefault()
+            a.scrollIntoView({behavior: "smooth"})
+          }
+        })
+    
+    
+    
+    
+          
+
+    </script>
+</body>
+</html>

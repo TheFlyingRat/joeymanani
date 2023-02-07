@@ -20,10 +20,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
-    <link rel="stylesheet" href="./assets/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="./assets/loadingPage.css">
+    <link rel="stylesheet" href="./assets/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
+    <script defer src="./assets/typingAnimation.js"></script>
+    <script defer src="./assets/animations.js"></script>
 </head>
-<body>
+<body onload="playAnimations();">
     <div id="shell" class="shell">
         <div id="ssh-message">
         Linux joeymanani 16.53.2 #1 Thu Jan 5 12:03:08 GMT 2023 x86_64 <!-- todo actual age n date -->
@@ -65,18 +74,31 @@
         </div>
     </div>
 
-    <script src="./assets/typingAnimation.js"></script>
-    <script src="./assets/animations.js"></script>
+
+    <div id="main-content" class="main-content hidden">
+        <main>
+            <h1>Joey Manani</h1>
+            <h2>Software Developer</h2>
+            <h3>Victoria, Australia</h3>
+        </main>
+    </div>
+
+    <div class="bottom-buttons">
+        <button onclick="alert('theflyingrat.com')"><span id="contact" class="fa-solid fa-envelope"></span></button>
+        <button onclick="document.location.href = 'https://links.theflyingrat.com'"><span id="links" class="fa-solid fa-plus"></span></button>
+        <button onclick="document.location.href = '/home';"><span id="skip-button" class="fa-sharp fa-solid fa-forward"></span></button>
+    </div>
+
+    <!-- add animations to the above icons -->
+
     <script>
         async function playAnimations() {
+            console.log('commencing animations as page has loaded.')
             await sleep(1500);
             await playShellAnimation();
             await sleep(400);
             await playTypingAnimation();
         }
-
-        playAnimations();
     </script>
-
 </body>
 </html>

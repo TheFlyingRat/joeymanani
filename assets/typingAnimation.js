@@ -59,8 +59,3 @@ async function backspace(id, text, speed) {
         }, 500);
     });
 }
-
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
