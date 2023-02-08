@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects & Work</title>
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
+    <script src="https://cdn.theflyingrat.com/assets/js/smoothScroll.min.js"></script>
+    <script src="/assets/functions.js"></script>
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/about.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            opacity: 0;
+            transition: opacity 600ms;
+        }
+    </style>
+</head>
+<body id="body-container">
+    <div id="main">
+        <div class="titlebar noselect">
+            <img src="/assets/logo.png" draggable="false" class="logo">
+        </div>
+
+        <div class="content">
+            <div id="nav">
+                <a href="/experience" draggable="false" id="backBtn" class="nav-link current">Prev</a>
+                <a href="/home" draggable="false" id="forwardBtn" class="nav-link">Next</a>
+                <h1 style="width: fit-content">Projects & Work</h1>
+            </div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In impedit facilis pariatur nemo quis accusamus, fuga corporis tempora ut autem animi cupiditate delectus, odio reprehenderit itaque inventore officia. Dolores, sapiente.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, magni. Aspernatur consequatur quidem, officia minus sed, eaque natus, mollitia autem asperiores vero quod architecto adipisci tempora possimus reiciendis magnam tenetur.
+            </p>
+        </div>
+
+        <script async>
+        // Get the two buttons
+        const backBtn = document.getElementById("backBtn");
+        const forwardBtn = document.getElementById("forwardBtn");
+
+        // Variables to keep track of the current selected button
+        let selectedBtn = backBtn;
+        let selectedClass = "backBtn";
+
+        // Add event listeners for keydown and mouseover
+        document.addEventListener("keydown", handleKeydown);
+        document.addEventListener("keydown", handleEnterKey);
+        backBtn.addEventListener("mouseover", handleMouseover);
+        forwardBtn.addEventListener("mouseover", handleMouseover);
+        backBtn.addEventListener("click", handleClick);
+        forwardBtn.addEventListener("click", handleClick);
+
+        // Handle keydown event
+        function handleKeydown(event) {
+            switch (event.keyCode) {
+                case 37: // left arrow key
+                    if (selectedClass === "forwardBtn") {
+                        toggleSelection(backBtn);
+                    }
+                    break;
+                case 39: // right arrow key
+                    if (selectedClass === "backBtn") {
+                        toggleSelection(forwardBtn);
+                    }
+                    break;
+            }
+        }
+
+        // Handle enter key press
+        function handleEnterKey(event) {
+            if (event.keyCode === 13 && selectedBtn.classList.contains("current")) {
+                playSound("success");
+                document.getElementById("body-container").style.opacity = 0;
+                setTimeout(() => {
+                    window.location.href = selectedBtn.href;
+                }, 1800);
+            }
+        }
+
+        // Handle click event (same as above just no if check)
+        function handleClick(event) {
+            event.preventDefault();
+            playSound("success");
+            document.getElementById("body-container").style.opacity = 0;
+            setTimeout(() => {
+                window.location.href = selectedBtn.href;
+            }, 1800);
+        }
+
+        // Handle mouseover event
+        function handleMouseover(event) {
+            toggleSelection(event.target);
+        }
+
+        // Toggle selection of the two buttons
+        function toggleSelection(newSelectedBtn) {
+            selectedBtn.classList.remove("current");
+            selectedBtn = newSelectedBtn;
+            selectedClass = selectedBtn.id;
+            selectedBtn.classList.add("current");
+            playSound("click");
+        }
+
+        // Allow smooth scrolling on the document
+        new smoothScroll(document, 50, 30);
+
+        // Once the body has loaded, reveal the magic
+        window.onload = function() {
+            document.getElementById("body-container").style.opacity = 1;
+        }
+    </script>
+</body>
+</html>

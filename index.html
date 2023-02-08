@@ -10,11 +10,8 @@
     <meta name="description" content="Joey Manani | Software Developer">
     <meta name="keywords" content="TheFlyingRat, Joey M, Software Developer, Web Development, Scripting languages, The, Flying, Rat, socials, youtube, snapchat, github">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="application-name" content="Links - TheFlyingRat">
-    <meta name="theme-color" content="#1e1e1e">
     <meta name="author" content="https://cdn.theflyingrat.com/humans.txt">
-    <link rel="icon" type="image/png" href="https://cdn.theflyingrat.com/favicon-32x32.png">
-    <link rel="icon" type="image/png" href="https://cdn.theflyingrat.com/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="favicon.ico">
     <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
     <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,18 +21,15 @@
     <link rel="stylesheet" href="./assets/loadingPage.css">
     <link rel="stylesheet" href="./assets/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
-    <script>
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-    </script>
     <script defer src="./assets/typingAnimation.js"></script>
     <script defer src="./assets/animations.js"></script>
+    <script src="./assets/functions.js"></script>
 </head>
-<body onload="playAnimations();">
+
+<body onload="init();">
     <div id="shell" class="shell">
         <div id="ssh-message">
-        Linux joeymanani 16.53.2 #1 Thu Jan 5 12:03:08 GMT 2023 x86_64 <!-- todo actual age n date -->
+        Linux joeymanani <span class="time-since-birthday">??.??.??</span> #1 <span id="current-date">Thu Jan 5 12:03:08 GMT 2023</span> x86_64 <!-- todo actual age n date -->
         <br><br>
         The programs included with the Debian GNU/Linux system are free software;<br>
         the exact distribution terms for each program are described in the<br>
@@ -46,7 +40,7 @@
         <br>
         </div>
         <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ joey --version
-        <p>Joey 16.10.5</p> <!-- todo make this my years.month.days age -->
+        <p>Joey <span class="time-since-birthday">??.??.??</span></p> <!-- todo make this my years.month.days age -->
         <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ whereis joey
         <p>joey: /earth/australia/victoria</p>
         <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ joey --help
@@ -59,7 +53,7 @@
         <p>  --load</p>
         </div>
         <br>
-        <p>You are running Joey 16.10.5</p>
+        <p>You are running Joey <span class="time-since-birthday">??.??.??</span></p>
         <p>Made with love</p>
         <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="shell-placeholder"></span><span id="shell-cursor">_</span>
         <br>
@@ -68,19 +62,10 @@
 
 
 
-    <div id="heading" class="heading hidden">
+    <div id="heading" class="heading noselect hidden">
         <div class="title">
             <span id="title-placeholder"></span><span id="typing-cursor" class="typing-cursor-animation">|</span>
         </div>
-    </div>
-
-
-    <div id="main-content" class="main-content hidden">
-        <main>
-            <h1>Joey Manani</h1>
-            <h2>Software Developer</h2>
-            <h3>Victoria, Australia</h3>
-        </main>
     </div>
 
     <div class="bottom-buttons">
@@ -92,12 +77,39 @@
     <!-- add animations to the above icons -->
 
     <script>
+
+        // Create a new data object, get its difference between my birthday and convert it to human readable
+        const date = new Date();
+        const difference = getDateDifference(date);
+        const dateString = date.toUTCString();
+
+        // Get each elem of my birthday string and the string where the human readable date is required
+        const timeSinceBirthdayString = document.getElementsByClassName("time-since-birthday");
+        const currentDateString = document.getElementById("current-date");
+
+
+        // Update each elem which calculates how long its been since my birthday with my birthday
+        for (let i = 0; i < timeSinceBirthdayString.length; i++) {
+            timeSinceBirthdayString[i].innerHTML = `${difference.years}.${difference.months}.${difference.days}`;
+        }
+
+        // Change the current date string to the current date human readable
+        currentDateString.innerHTML = dateString;
+
+
+        // Play animations
         async function playAnimations() {
-            console.log('commencing animations as page has loaded.')
+            console.log('Commencing animations!')
             await sleep(1500);
             await playShellAnimation();
             await sleep(400);
             await playTypingAnimation();
+        }
+
+        function init() {
+            // Executes on body load
+            console.log("Finished loading.")
+            playAnimations();
         }
     </script>
 </body>

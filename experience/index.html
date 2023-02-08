@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- [F] -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Experience & Achievements</title>
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
     <script src="https://cdn.theflyingrat.com/assets/js/smoothScroll.min.js"></script>
+    <script src="/assets/functions.js"></script>
     <link rel="stylesheet" href="/assets/main.css">
     <link rel="stylesheet" href="/assets/experience.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,16 +26,18 @@
 </head>
 <body id="body-container">
     <div id="main">
-        <div class="titlebar">
-            <img src="/assets/logo.png" class="logo">
+        <div class="titlebar noselect">
+            <img src="/assets/logo.png" draggable="false" class="logo">
         </div>
 
         <div class="content">
             <table class="experience-table">
-                    <tr class="table-heading">
+                    <tr class="table-heading noselect">
                         <td class="experience-year"></td>
-                        <td class="stay-there">
-                            <h1>Experience & Achievements</h1>
+                        <td id="nav">
+                            <a href="/about" draggable="false" id="backBtn" class="nav-link current">Prev</a>
+                            <a href="/projects" draggable="false" id="forwardBtn" class="nav-link">Next</a>
+                            <h1 style="width: fit-content">Experience & Achievements</h1>
                         </td>
                     </tr>
                     <tr id="2023">
@@ -42,7 +46,7 @@
                             <div class="line"></div>
                         </td>
                         <td>
-                            <h5>2023</h5>
+                            <h5 class="code-comment-heading">// 2023</h5>
                             <p>I started learning C# and plan to develop Windows as well as mobile apps</p>
                         </td>
                     </tr>
@@ -52,7 +56,7 @@
                             <div class="line"></div>
                         </td>
                         <td>
-                            <h5>2022</h5>
+                            <h5 class="code-comment-heading">// 2022</h5>
                             <p>I became advanced in the Python programming language</p>
                             <p>Released version 6 of my personal website introducing very advanced CSS, JavaScript and optimized HTML</p>
                         </td>
@@ -63,7 +67,7 @@
                             <div class="line"></div>
                         </td>
                         <td>
-                            <h5>2021</h5>
+                            <h5 class="code-comment-heading">// 2021</h5>
                             <p>I started developing my online portfolio for professional use</p>
                             <p>I placed first in an Australian national Python competition (Grok Learning)</p>
                             <p>Received the St John Ambulance First Aid Certificate for basic emergency life support & cardiopulmonary resuscitation</p>
@@ -76,7 +80,7 @@
                             <div class="line"></div>
                         </td>
                         <td>
-                            <h5>2020</h5>
+                            <h5 class="code-comment-heading">// 2020</h5>
                             <p>I started learning the Python programming language by building a Discord bot</p>
                             <p>I began working with Raspberry Pi's and electrical engineering</p>
                             <p>Released revision 4 of my personal website, this time more of a backend update than a frontend utilizing a database and PHP</p>
@@ -88,7 +92,7 @@
                             <div class="line"></div>
                         </td>
                         <td>
-                            <h5>2019</h5>
+                            <h5 class="code-comment-heading">// 2019</h5>
                             <p>Achieved 5th place in RoboCup state-wide Robotics Competition held in Melbourne, Australia</p>
                             <p>Started revision 3 of my personal website, a modified template which used high contrast and advanced HTML features</p>
                             <p>Expanded my web development knowledge by including JavaScript and advanced CSS in my projects</p>
@@ -100,7 +104,7 @@
                             <div class="line"></div>
                         </td>
                         <td>
-                            <h5>2018</h5>
+                            <h5 class="code-comment-heading">// 2018</h5>
                             <p>RoboCup Mentor Award – Helping other students succeed in their robot builds and programs</p>
                             <p>2nd place in RoboCup Robotics Competition – Building and programming a robot to follow a predetermined course and overcome obstacles in its path</p>
                         </td>
@@ -111,7 +115,7 @@
                             <div class="line"></div>
                         </td>
                         <td>
-                            <h5>2017</h5>
+                            <h5 class="code-comment-heading">// 2017</h5>
                             <p>Started exploring robotics and their uses</p>
                             <p>Experimented with Lego's EV3 robotics kit and made a working black and white printer</p>
                             <p>Released revision 2 of my personal website with basic styles and HTML, a cream colored background with black text</p>
@@ -123,7 +127,7 @@
                             <div class="line curved dotted "></div>
                         </td>
                         <td style="padding-bottom: 100vh">
-                            <h5>2016</h5>
+                            <h5 class="code-comment-heading">// 2016</h5>
                             <p>Started my web development journey</p>
                             <p>Found my identity by fiddling with computers and making cool things happen</p>
                             <p>Released revision 1 of my personal website - literally a coming soon page and figuring out how to make my website public</p>
@@ -132,32 +136,92 @@
                 </table>
             </div>  
         </div>
-        
 
+        <script async>
+        // Get the two buttons
+        const backBtn = document.getElementById("backBtn");
+        const forwardBtn = document.getElementById("forwardBtn");
 
-    <script>
+        // Variables to keep track of the current selected button
+        let selectedBtn = backBtn;
+        let selectedClass = "backBtn";
 
-        new smoothScroll(document, 50, 30);
+        // Add event listeners for keydown and mouseover
+        document.addEventListener("keydown", handleKeydown);
+        document.addEventListener("keydown", handleEnterKey);
+        backBtn.addEventListener("mouseover", handleMouseover);
+        forwardBtn.addEventListener("mouseover", handleMouseover);
+        backBtn.addEventListener("click", handleClick);
+        forwardBtn.addEventListener("click", handleClick);
 
-
-        window.onload = function() {
-            document.getElementById("body-container").style.opacity = 1;
+        // Handle keydown event
+        function handleKeydown(event) {
+            switch (event.keyCode) {
+                case 37: // left arrow key
+                    if (selectedClass === "forwardBtn") {
+                        toggleSelection(backBtn);
+                    }
+                    break;
+                case 39: // right arrow key
+                    if (selectedClass === "backBtn") {
+                        toggleSelection(forwardBtn);
+                    }
+                    break;
+            }
         }
-        
-        const $elems = document.querySelectorAll('.experience-year a')
-        var elems = Array.from($elems)
-        elems.map(a => {
+
+        // Handle enter key press
+        function handleEnterKey(event) {
+            if (event.keyCode === 13 && selectedBtn.classList.contains("current")) {
+                playSound("success");
+                document.getElementById("body-container").style.opacity = 0;
+                setTimeout(() => {
+                    window.location.href = selectedBtn.href;
+                }, 1800);
+            }
+        }
+
+        // Handle click event (same as above just no if check)
+        function handleClick(event) {
+            event.preventDefault();
+            playSound("success");
+            document.getElementById("body-container").style.opacity = 0;
+            setTimeout(() => {
+                window.location.href = selectedBtn.href;
+            }, 1800);
+        }
+
+        // Handle mouseover event
+        function handleMouseover(event) {
+            toggleSelection(event.target);
+        }
+
+        // Toggle selection of the two buttons
+        function toggleSelection(newSelectedBtn) {
+            selectedBtn.classList.remove("current");
+            selectedBtn = newSelectedBtn;
+            selectedClass = selectedBtn.id;
+            selectedBtn.classList.add("current");
+            playSound("click");
+        }
+
+        // Rebind all anchor clicks to smoothly scroll into view (since they're not actual links, just IDs)
+        const $clickableYears = document.querySelectorAll('.experience-year a')
+        var clickableYears = Array.from($clickableYears)
+        clickableYears.map(a => {
           a.onclick = (e) => {
             e.preventDefault()
             a.scrollIntoView({behavior: "smooth"})
           }
-        })
-    
-    
-    
-    
-          
+        }) 
 
+        // Allow smooth scrolling on the document
+        new smoothScroll(document, 50, 30);
+
+        // Once the body has loaded, reveal the magic
+        window.onload = function() {
+            document.getElementById("body-container").style.opacity = 1;
+        }
     </script>
 </body>
 </html>

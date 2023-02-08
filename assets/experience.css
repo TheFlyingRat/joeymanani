@@ -62,3 +62,11 @@ body {
     font-family: Inter, Arial, sans-serif;
 }
 
+
+.code-comment-heading {
+    color: gray;
+    font-family: monospace !important;
+}
+
+
+
