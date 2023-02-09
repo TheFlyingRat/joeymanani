@@ -29,13 +29,39 @@
             transition: opacity 600ms;
         }
     </style>
+    <style>
+        #name span {
+          display: inline-block;
+          transition: transform 0.125s ease-in-out;
+          vertical-align: bottom;
+        }
+      
+        #name span:hover {
+          transform: translateY(-15px);
+        }
+      </style>
 </head>
 <body id="body-container" class="noselect">
     <div id="main">
         <main>
             <div class="content">
-                <h1>Joey Manani</h1>
-                <!-- Fix bug where "click.wav" plays twice if you move between arrow and text-->
+                <h1 id="name">Joey Manani</h1>
+                <script>
+                    const name = document.getElementById("name");
+                    let text = name.innerHTML;
+                    name.innerHTML = "";
+                    for (let i = 0; i < text.length; i++) {
+                      if (text[i] == " ") {
+                        let letter = document.createElement("span");
+                        letter.innerHTML = "&nbsp;";
+                        name.appendChild(letter);
+                        continue;
+                      }
+                      let letter = document.createElement("span");
+                      letter.innerHTML = text[i];
+                      name.appendChild(letter);
+                    }
+                  </script>
                 <a href="/developer/" draggable="false" class="code-comment current"><i class="fa-sharp fa-solid fa-arrow-right"></i> Software Developer</a>
                 <a href="/about/" draggable="false" class="code-comment"><i class="fa-sharp fa-solid fa-arrow-right invisible"></i> About Me</a>
                 <a href="/experience/" draggable="false" class="code-comment"><i class="fa-sharp fa-solid fa-arrow-right invisible"></i> Experience & Achievements</a>
