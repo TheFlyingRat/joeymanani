@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /assets
+Allow: /home
+Allow: /experience
+Allow: /developer
+Allow: /projects
+Allow: /about
+Allow: /
+
