@@ -9,6 +9,7 @@ let selectedClass = "backBtn";
 // Add event listeners for keydown and mouseover
 document.addEventListener("keydown", handleKeydown);
 document.addEventListener("keydown", handleEnterKey);
+document.getElementsByClassName("logo")[0].addEventListener("click", handleGoHome);
 backBtn.addEventListener("mouseover", handleMouseover);
 forwardBtn.addEventListener("mouseover", handleMouseover);
 backBtn.addEventListener("click", handleClick);
@@ -54,6 +55,12 @@ function handleClick(event) {
 // Handle mouseover event
 function handleMouseover(event) {
     toggleSelection(event.target);
+}
+
+// Handle user clicking logo
+function handleGoHome(event) {
+    window.location.href = "/home";
+    event.target.style.cursor = "pointer";
 }
 
 // Toggle selection of the two buttons
