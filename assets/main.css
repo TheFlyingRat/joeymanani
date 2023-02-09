@@ -1,5 +1,10 @@
 /* Also make this mobile friendly */
 
+/* no scrollbar */
+::-webkit-scrollbar {
+    display: none !important;
+}
+
 html, body {
     background-color: #121212;
     color: #ddd;
@@ -40,7 +45,6 @@ a:hover, a:focus {
 body {
     height: 100vh;
     padding: 12px;
-    overflow: hidden;
     font-size: 1.8em;
 }
 

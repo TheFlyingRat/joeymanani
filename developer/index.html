@@ -12,9 +12,11 @@
     <meta name="author" content="https://cdn.theflyingrat.com/humans.txt">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
-    <script src="https://cdn.theflyingrat.com/assets/js/smoothScroll.min.js"></script>
+    <script defer src="https://cdn.theflyingrat.com/assets/js/smoothScroll.min.js"></script>
+    <script defer src="https://cdn.theflyingrat.com/assets/js/is.min.js"></script>
     <script defer src="/assets/functions.min.js"></script>
     <script defer src="/assets/menuHandler.min.js"></script>
+    <script defer src="/assets/tryEnableSmoothScroll.min.js"></script>
     <link rel="stylesheet" href="/assets/main.min.css">
     <link rel="stylesheet" href="/assets/developer.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,10 +70,6 @@
         </div>
 
         <script>
-
-        // Allow smooth scrolling on the document
-        new smoothScroll(document, 50, 30);
-
         // Once the body has loaded, reveal the magic
         window.onload = function() {
             document.getElementById("body-container").style.opacity = 1;
