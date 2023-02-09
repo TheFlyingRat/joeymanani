@@ -17,6 +17,16 @@ html, body {
     overflow-y: hidden;
 }
 
+#name span {
+    display: inline-block;
+    transition: transform 0.125s ease-in-out;
+    vertical-align: bottom;
+}
+
+#name span:hover {
+    transform: translateY(-15px);
+}
+
 
 .code-comment {
     font-size: 2.2rem !important;

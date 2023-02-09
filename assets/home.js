@@ -73,3 +73,19 @@ function showArrow(link) {
     link.querySelector('i').style.opacity = 1;
     link.classList.add('current');
 }
+
+// Bouncy title animation thingy
+const name = document.getElementById("name");
+let text = name.innerHTML;
+name.innerHTML = "";
+for (let i = 0; i < text.length; i++) {
+  if (text[i] == " ") {
+    let letter = document.createElement("span");
+    letter.innerHTML = "&nbsp;";
+    name.appendChild(letter);
+    continue;
+  }
+  let letter = document.createElement("span");
+  letter.innerHTML = text[i];
+  name.appendChild(letter);
+}
