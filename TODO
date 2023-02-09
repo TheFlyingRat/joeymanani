@@ -1,3 +1,5 @@
 # 404 page
 # Add text animation to "Joey Manani" title [PARTIAL]
 # Prevent selection of text in subpages (or theme it, dunno)
+# Use is.js and refactor smoothscroll to only enable on desktop enviros
+# Disable overfloe on home for mobile
