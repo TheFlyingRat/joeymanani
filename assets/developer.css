@@ -8,3 +8,9 @@
 #nav {
     margin-bottom: 5%;
 }
+
+.content > h4 {
+    color: gray;
+    font-family: monospace !important;;
+    padding-top: 3%;
+}

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
     <script src="https://cdn.theflyingrat.com/assets/js/smoothScroll.min.js"></script>
-    <script src="/assets/functions.js"></script>
+    <script defer src="/assets/functions.js"></script>
+    <script defer src="/assets/menuHandler.js"></script>
     <link rel="stylesheet" href="/assets/main.css">
     <link rel="stylesheet" href="/assets/about.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,81 +36,20 @@
                 <a href="/experience" draggable="false" id="forwardBtn" class="nav-link">Next</a>
                 <h1 style="width: fit-content">About Me</h1>
             </div>
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In impedit facilis pariatur nemo quis accusamus, fuga corporis tempora ut autem animi cupiditate delectus, odio reprehenderit itaque inventore officia. Dolores, sapiente.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, magni. Aspernatur consequatur quidem, officia minus sed, eaque natus, mollitia autem asperiores vero quod architecto adipisci tempora possimus reiciendis magnam tenetur.
-            </p>
+            <p>Hey, my name is Joey Manani, and I'm a 17-year-old with a love for technology.</p>
+
+            <p>I'm a <a href="/developer">software developer</a> and I'm constantly learning and exploring new things, and I believe that age is just a number when it comes to knowledge and experience.</p>
+            
+            <p>When I'm not coding away on my computer, I enjoy playing video games, hanging out with friends, and learning new things. I enjoy playing table tennis and love solving puzzles. I'm also a foodie and love trying new restaurants and cuisines.</p>
+            
+            <p>I'm a bit of a nerd, hence I love to learn about new technologies and keep up with the latest advancements in the tech world. But, I also have a little creative side and love to express myself through <a href="https://api.theflyingrat.com/redir/f3682916e344a4bb1d2f3876b0c982dc21ed1e7c">design and photography</a>.</p>
+            
+            <p>I believe in living life to the fullest and making the most of every opportunity that comes my way. I'm not afraid to take risks and try new things, and I believe that life is too short to play everything too safe.</p>
+            
+            <p>In conclusion, I'm a fun-loving, tech-savvy, and adventurous 17-year-old who's always up for a good time. So, if you're looking for someone to share a laugh with or talk tech, then <a href="mailto:theflyingrat@theflyingrat.com">I'm your guy!</a></p>
         </div>
 
-        <script async>
-        // Get the two buttons
-        const backBtn = document.getElementById("backBtn");
-        const forwardBtn = document.getElementById("forwardBtn");
-
-        // Variables to keep track of the current selected button
-        let selectedBtn = backBtn;
-        let selectedClass = "backBtn";
-
-        // Add event listeners for keydown and mouseover
-        document.addEventListener("keydown", handleKeydown);
-        document.addEventListener("keydown", handleEnterKey);
-        backBtn.addEventListener("mouseover", handleMouseover);
-        forwardBtn.addEventListener("mouseover", handleMouseover);
-        backBtn.addEventListener("click", handleClick);
-        forwardBtn.addEventListener("click", handleClick);
-
-        // Handle keydown event
-        function handleKeydown(event) {
-            switch (event.keyCode) {
-                case 37: // left arrow key
-                    if (selectedClass === "forwardBtn") {
-                        toggleSelection(backBtn);
-                    }
-                    break;
-                case 39: // right arrow key
-                    if (selectedClass === "backBtn") {
-                        toggleSelection(forwardBtn);
-                    }
-                    break;
-            }
-        }
-
-        // Handle enter key press
-        function handleEnterKey(event) {
-            if (event.keyCode === 13 && selectedBtn.classList.contains("current")) {
-                playSound("success");
-                document.getElementById("body-container").style.opacity = 0;
-                setTimeout(() => {
-                    window.location.href = selectedBtn.href;
-                }, 1800);
-            }
-        }
-
-        // Handle click event (same as above just no if check)
-        function handleClick(event) {
-            event.preventDefault();
-            playSound("success");
-            document.getElementById("body-container").style.opacity = 0;
-            setTimeout(() => {
-                window.location.href = selectedBtn.href;
-            }, 1800);
-        }
-
-        // Handle mouseover event
-        function handleMouseover(event) {
-            toggleSelection(event.target);
-        }
-
-        // Toggle selection of the two buttons
-        function toggleSelection(newSelectedBtn) {
-            selectedBtn.classList.remove("current");
-            selectedBtn = newSelectedBtn;
-            selectedClass = selectedBtn.id;
-            selectedBtn.classList.add("current");
-            playSound("click");
-        }
+        <script>
 
         // Allow smooth scrolling on the document
         new smoothScroll(document, 50, 30);

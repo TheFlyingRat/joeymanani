@@ -34,12 +34,20 @@ function getDateDifference(date) {
 }
 
 // Audio object
-const audio = new Audio();
+const audioThread1 = new Audio();
+const audioThread2 = new Audio();
 
 // Play a sound when the button is selected or hovered
 function playSound(sound) {
-    audio.src = '/assets/' + sound + '.wav';
-    audio.play();
+    if (!audioThread1.paused) {
+        audioThread2.src = '/assets/' + sound + '.wav';
+        audioThread2.play();
+        console.log("T2: Played.")
+    } else {
+        audioThread1.src = '/assets/' + sound + '.wav';
+        audioThread1.play();
+        console.log("T1: Played.")
+    }
 }
 
 // Sleep function

@@ -9,6 +9,16 @@ html, body {
     display: none;
 }
 
+a {
+    color: #ddd;
+    text-decoration: underline dotted;
+    text-underline-offset: 2px;
+}
+
+a:hover, a:focus {
+    color: #999;
+}
+
 .logo {
     width: 8%;
     min-width: 90px;
@@ -31,8 +41,20 @@ body {
     height: 100vh;
     padding: 12px;
     overflow: hidden;
-    cursor: url("/assets/cursor.png"), auto;
+    font-size: 1.8em;
 }
+
+.content {
+    margin-top: 6%; 
+    margin-left: 15%;
+    margin-right: 25%;
+    padding-bottom: 5%;
+}
+
+#nav {
+    margin-bottom: 5%;
+} 
+
 
 .nav-link {
     text-decoration: none !important;
@@ -53,10 +75,29 @@ body {
     background-color: #ddd;
 }
 
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */  
+}
+
 @media only screen and (max-width: 920px) {
 
     .nav-link {
         font-size: 1.4rem;
+    }
+
+    .content { 
+        margin-left: 5%;
+        margin-right: 10%;
+    }
+    
+    body {
+        font-size: 1.4em;
     }
 
 }
@@ -67,14 +108,14 @@ body {
         font-size: 1.2rem;
     }
 
+    .content { 
+        margin-left: 3%;
+        margin-right: 7%;
+    }
+    
+    body {
+        font-size: 1.2em;
+    }
+
 }
 
-.noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */  
-}

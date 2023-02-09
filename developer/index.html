@@ -10,7 +10,7 @@
     <script src="https://cdn.theflyingrat.com/assets/js/smoothScroll.min.js"></script>
     <script src="/assets/functions.js"></script>
     <link rel="stylesheet" href="/assets/main.css">
-    <link rel="stylesheet" href="/assets/about.css">
+    <link rel="stylesheet" href="/assets/developer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">    
@@ -34,83 +34,35 @@
                 <a href="/home" draggable="false" id="backBtn" class="nav-link current">Prev</a>
                 <a href="/about" draggable="false" id="forwardBtn" class="nav-link">Next</a>
                 <h1 style="width: fit-content">Software Developer</h1>
-                <h2 style="width: fit-content">What's that?</h2>
             </div>
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In impedit facilis pariatur nemo quis accusamus, fuga corporis tempora ut autem animi cupiditate delectus, odio reprehenderit itaque inventore officia. Dolores, sapiente.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, magni. Aspernatur consequatur quidem, officia minus sed, eaque natus, mollitia autem asperiores vero quod architecto adipisci tempora possimus reiciendis magnam tenetur.
-            </p>
+            <h4 style="padding-top: 0px;">// Welcome</h4>
+            <p>So, you've stumbled upon a software developer's personal website, and you're wondering, "What exactly do these people do all day?" Well, buckle up, because you're in for a wild ride! Let's talk about software development and what makes it such a unique and entertaining profession.</p>
+            
+            <h4>// What on earth is software development, you ask?</h4>
+            
+            <p>In simple terms, it's like cooking a meal. You have a recipe (or in our case, a set of requirements), you gather your ingredients (programming languages, frameworks, etc.), and you create something delicious (a software application) that solves a problem or satisfies a need.</p>
+            
+            <h4>// But what do software developers actually do?</h4>
+            
+            <p>Let me paint a picture for you. We sit in front of our computers, typing away on keyboards, surrounded by coffee and snack wrappers. We write code, test it, and then rewrite it again because, let's be honest, the first version was never good enough.</p>
+            
+            <p>We work with project managers, designers, and other folks to understand what our users want and need. And when things go wrong (and they will), we jump into detective mode to find and fix bugs. It's like a never-ending game of whack-a-mole, but with code. And coffee.</p>
+            
+            <h4>// Why choose software development as a career?</h4>
+            
+            <p>First and foremost, the demand for software developers is constantly growing, so job security is on our side. And let's not forget about the sweet, sweet paychecks.</p>
+            
+            <p>But the real reason we love our jobs is because the field is constantly changing. We never get bored because there's always something new to learn, whether it's a new programming language or a cutting-edge technology.</p>
+            
+            <p>And let's not forget about the feeling of making a difference. Our creations have the power to make people's lives easier, more efficient, and more enjoyable. Who wouldn't love that? I certainly do.</p>
+            
+            <p>Anyways, if you have a love for technology and a passion for problem-solving, then software development is the career for you. So, grab some coffee, open your favorite code editor, and <a href="https://www.freecodecamp.org/news/how-to-learn-programming/">learn how to code*</a> and become a code wizard just like me!</p>
+        
+            <p>* Not affiliated by freeCodeCamp</p>
         </div>
 
-        <script async>
-        // Get the two buttons
-        const backBtn = document.getElementById("backBtn");
-        const forwardBtn = document.getElementById("forwardBtn");
-
-        // Variables to keep track of the current selected button
-        let selectedBtn = backBtn;
-        let selectedClass = "backBtn";
-
-        // Add event listeners for keydown and mouseover
-        document.addEventListener("keydown", handleKeydown);
-        document.addEventListener("keydown", handleEnterKey);
-        backBtn.addEventListener("mouseover", handleMouseover);
-        forwardBtn.addEventListener("mouseover", handleMouseover);
-        backBtn.addEventListener("click", handleClick);
-        forwardBtn.addEventListener("click", handleClick);
-
-        // Handle keydown event
-        function handleKeydown(event) {
-            switch (event.keyCode) {
-                case 37: // left arrow key
-                    if (selectedClass === "forwardBtn") {
-                        toggleSelection(backBtn);
-                    }
-                    break;
-                case 39: // right arrow key
-                    if (selectedClass === "backBtn") {
-                        toggleSelection(forwardBtn);
-                    }
-                    break;
-            }
-        }
-
-        // Handle enter key press
-        function handleEnterKey(event) {
-            if (event.keyCode === 13 && selectedBtn.classList.contains("current")) {
-                playSound("success");
-                document.getElementById("body-container").style.opacity = 0;
-                setTimeout(() => {
-                    window.location.href = selectedBtn.href;
-                }, 1800);
-            }
-        }
-
-        // Handle click event (same as above just no if check)
-        function handleClick(event) {
-            event.preventDefault();
-            playSound("success");
-            document.getElementById("body-container").style.opacity = 0;
-            setTimeout(() => {
-                window.location.href = selectedBtn.href;
-            }, 1800);
-        }
-
-        // Handle mouseover event
-        function handleMouseover(event) {
-            toggleSelection(event.target);
-        }
-
-        // Toggle selection of the two buttons
-        function toggleSelection(newSelectedBtn) {
-            selectedBtn.classList.remove("current");
-            selectedBtn = newSelectedBtn;
-            selectedClass = selectedBtn.id;
-            selectedBtn.classList.add("current");
-            playSound("click");
-        }
+        <script src="/assets/menuHandler.js"></script>
+        <script>
 
         // Allow smooth scrolling on the document
         new smoothScroll(document, 50, 30);

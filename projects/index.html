@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
     <script src="https://cdn.theflyingrat.com/assets/js/smoothScroll.min.js"></script>
-    <script src="/assets/functions.js"></script>
+    <script defer src="/assets/functions.js"></script>
+    <script defer src="/assets/menuHandler.js"></script>
     <link rel="stylesheet" href="/assets/main.css">
-    <link rel="stylesheet" href="/assets/about.css">
+    <link rel="stylesheet" href="/assets/projects.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">    
@@ -19,7 +20,7 @@
         body {
             background-color: #121212;
             opacity: 0;
-            transition: opacity 600ms;
+            transition: all 600ms;
         }
     </style>
 </head>
@@ -35,81 +36,26 @@
                 <a href="/home" draggable="false" id="forwardBtn" class="nav-link">Next</a>
                 <h1 style="width: fit-content">Projects & Work</h1>
             </div>
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In impedit facilis pariatur nemo quis accusamus, fuga corporis tempora ut autem animi cupiditate delectus, odio reprehenderit itaque inventore officia. Dolores, sapiente.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, magni. Aspernatur consequatur quidem, officia minus sed, eaque natus, mollitia autem asperiores vero quod architecto adipisci tempora possimus reiciendis magnam tenetur.
-            </p>
+            <p>As a software developer, I've had the opportunity to work on a variety of projects that have allowed me to showcase my skills and creativity. Here's a list of some of my proudest accomplishments:</p>
+
+            <ul>
+                <li>Website Development: I developed a website for <a href="https://lvpsg.org/">LVPSG</a>, which showcases my ability to design and build a functional website from scratch.</li>
+                
+                <li>Temporary File Cleaner: I wrote a "Temporary File Cleaner" for Windows, which helps users free up space on their computers by removing unnecessary temporary files.</li>
+                
+                <li>School Timetable Scraper: I wrote a Python program that scrapes my school timetable and copies it to Google Calendar. This helps me stay organized and get notifications before class.</li>
+                
+                <li>Discord Bot: I wrote a Discord bot in Python, which can be used to automate tasks and add interactive features to Discord servers.</li>
+                
+                <li>API Development: I developed an API for <a href="https://api.theflyingrat.com">theflyingrat.com</a> with Node, which allows users to access data and functionality from my website and projects in a more convenient and flexible way.</li>
+                
+                <li>Send2Self (alpha stages): I'm currently working on a project called Send2Self, which is still in the alpha stages. This project is a platform for sending small files between devices without the need of a centralized server, and I'm excited to see where it goes in the future!</li>
+            </ul>
+            
+            <p>These projects have allowed me to apply my knowledge and experience in a practical and meaningful way, and I'm always looking for new challenges to tackle.</p>
         </div>
 
-        <script async>
-        // Get the two buttons
-        const backBtn = document.getElementById("backBtn");
-        const forwardBtn = document.getElementById("forwardBtn");
-
-        // Variables to keep track of the current selected button
-        let selectedBtn = backBtn;
-        let selectedClass = "backBtn";
-
-        // Add event listeners for keydown and mouseover
-        document.addEventListener("keydown", handleKeydown);
-        document.addEventListener("keydown", handleEnterKey);
-        backBtn.addEventListener("mouseover", handleMouseover);
-        forwardBtn.addEventListener("mouseover", handleMouseover);
-        backBtn.addEventListener("click", handleClick);
-        forwardBtn.addEventListener("click", handleClick);
-
-        // Handle keydown event
-        function handleKeydown(event) {
-            switch (event.keyCode) {
-                case 37: // left arrow key
-                    if (selectedClass === "forwardBtn") {
-                        toggleSelection(backBtn);
-                    }
-                    break;
-                case 39: // right arrow key
-                    if (selectedClass === "backBtn") {
-                        toggleSelection(forwardBtn);
-                    }
-                    break;
-            }
-        }
-
-        // Handle enter key press
-        function handleEnterKey(event) {
-            if (event.keyCode === 13 && selectedBtn.classList.contains("current")) {
-                playSound("success");
-                document.getElementById("body-container").style.opacity = 0;
-                setTimeout(() => {
-                    window.location.href = selectedBtn.href;
-                }, 1800);
-            }
-        }
-
-        // Handle click event (same as above just no if check)
-        function handleClick(event) {
-            event.preventDefault();
-            playSound("success");
-            document.getElementById("body-container").style.opacity = 0;
-            setTimeout(() => {
-                window.location.href = selectedBtn.href;
-            }, 1800);
-        }
-
-        // Handle mouseover event
-        function handleMouseover(event) {
-            toggleSelection(event.target);
-        }
-
-        // Toggle selection of the two buttons
-        function toggleSelection(newSelectedBtn) {
-            selectedBtn.classList.remove("current");
-            selectedBtn = newSelectedBtn;
-            selectedClass = selectedBtn.id;
-            selectedBtn.classList.add("current");
-            playSound("click");
-        }
+        <script>
 
         // Allow smooth scrolling on the document
         new smoothScroll(document, 50, 30);

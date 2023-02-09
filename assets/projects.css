@@ -1,0 +1,10 @@
+
+ul {
+    list-style-type: disc;
+    padding-left: 40px;
+    text-indent: -25px;
+}
+
+li {
+  margin-left: 20px;
+}
