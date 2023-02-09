@@ -1,7 +1,7 @@
 var charsTyped = 0;
 const typingCursor = document.getElementById("typing-cursor");
-const backspaceSound = new Audio('./assets/backspace.wav');
-const keySound = new Audio('./assets/button.wav');
+const backspaceSound = new Audio('/assets/backspace.wav');
+const keySound = new Audio('/assets/button.wav');
 
 async function type(id, text, speed) {
     const textPlaceholder = document.getElementById(id);

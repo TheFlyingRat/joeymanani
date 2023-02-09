@@ -1,6 +1,6 @@
 async function playShellAnimation() {
-    const enterSound = new Audio('./assets/enter.wav');
-    const alertSound = new Audio('./assets/alert.wav');
+    const enterSound = new Audio('/assets/enter.wav');
+    const alertSound = new Audio('/assets/alert.wav');
     const shellResp = document.getElementById("shell-response");
     const shellWrapper = document.getElementById("shell");
     const headingWrapper = document.getElementById("heading");
