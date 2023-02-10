@@ -55,6 +55,14 @@ body {
     padding-bottom: 5%;
 }
 
+.content *::selection {
+    background-color: #ddd !important;
+    color: #000 !important;
+    cursor: default;
+}
+
+
+
 #nav {
     margin-bottom: 5%;
 } 
