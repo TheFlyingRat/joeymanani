@@ -54,6 +54,7 @@
         </div>
         <br>
         <p>You are running Joey <span class="time-since-birthday">??.??.??</span></p>
+        <p>Pressing any key will skip animations!</p>
         <p>Made with love</p>
         <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="shell-placeholder"></span><span id="shell-cursor">_</span>
         <br>
@@ -96,6 +97,11 @@
         // Change the current date string to the current date human readable
         currentDateString.innerHTML = dateString;
 
+        // Press any key to skip animations
+        document.onkeypress = function(event) {
+            console.log("Skipping animation since key was pressed!!")
+            window.location.href = "/home";
+        };
 
         // Play animations
         async function playAnimations() {
