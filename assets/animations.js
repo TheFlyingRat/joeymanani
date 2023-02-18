@@ -27,17 +27,12 @@ async function playShellAnimation() {
 }
 
 async function playTypingAnimation() {
-    await type("title-placeholder", "Tech-Passionate Developer", 106);
-    await sleep(2000);
-    await backspace("title-placeholder", "Tech-Passionate Developer", 48);
-    await sleep(1500);
-    await type("title-placeholder", "Code Explorer", 106);
-    await sleep(2000);
-    await backspace("title-placeholder", "Code Explorer", 48);
-    await sleep(1500);
-    await type("title-placeholder", "Pushing Boundaries", 106);
-    await sleep(2000);
-    await backspace("title-placeholder", "Pushing Boundaries", 48);
-    await sleep(550);
+    // await type("title-placeholder", "Joey Manani", 106);
+    // await sleep(2000);
+    // await backspace("title-placeholder", "Joey Manani", 48);
+    // await sleep(550);
+
+    // TODO: Make this scene more exciting i guess.
+
     document.location.href = "/home";
 }
