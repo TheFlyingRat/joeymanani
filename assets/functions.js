@@ -39,17 +39,25 @@ const audioThread2 = new Audio();
 
 // Play a sound when the button is selected or hovered
 function playSound(sound) {
-    if (!audioThread1.paused) {
-        audioThread2.src = '/assets/' + sound + '.wav';
-        audioThread2.play();
-        console.log("T2: Played.")
-    } else {
-        audioThread1.src = '/assets/' + sound + '.wav';
-        audioThread1.play();
-        console.log("T1: Played.")
+    try {
+        var playPromise;
+        if (audioThread1.paused) {
+            audioThread1.src = "/assets/" + sound + ".wav";
+            playPromise = audioThread1.play();
+        } else {
+            audioThread2.src = "/assets/" + sound + ".wav";
+            playPromise = audioThread2.play();
+        }
+        
+        if (playPromise !== undefined) {
+            playPromise.catch(function(error) {
+                console.log("User didn't interact. Can't play sound!");
+            });
+        }
+    } catch (error) {
+        console.log("Couldn't play sound because of error: " + error);
     }
 }
-
 // Sleep function
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
