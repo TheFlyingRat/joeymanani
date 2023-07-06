@@ -5,27 +5,36 @@
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://cdn.theflyingrat.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
+    <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="preload" as="script" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/functions.min.js">
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/home.min.js">
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/home.min.css">    
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/js/smoothScroll.min.js"> 
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/js/is.min.js">
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/tryEnableSmoothScroll.min.js">    
+    <link rel="prefetch" href="https://fonts.googleapis.com/css2?family=Inter&display=swap">    
+    <link rel="prerender" href="/home/index.html">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="name" content="Joey Manani">
     <meta name="description" content="I'm Joey Manani, a 17-year-old software developer with a passion for technology and a love for learning. On my website, you can learn more about me, my experience and achievements, and check out my projects and work.    ">
     <meta name="keywords" content="TheFlyingRat, Joey M, Software Developer, Web Development, Scripting languages, The, Flying, Rat, socials, youtube, snapchat, github">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="author" content="https://cdn.theflyingrat.com/humans.txt">
-    <link rel="icon" type="image/png" href="favicon.ico">
-    <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
-    <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.theflyingrat.com/assets/joeymanani/assets/typingAnimation.min.js"></script>
+    <script defer src="https://cdn.theflyingrat.com/assets/joeymanani/assets/animations.min.js"></script>
+    <script src="https://cdn.theflyingrat.com/assets/joeymanani/assets/functions.min.js"></script>
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/loadingPage.min.css">
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/main.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="/assets/loadingPage.min.css">
-    <link rel="stylesheet" href="/assets/main.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
-    <script defer src="/assets/typingAnimation.min.js"></script>
-    <script defer src="/assets/animations.min.js"></script>
-    <script src="/assets/functions.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap">
 </head>
-
 <body onload="init();">
     <div id="shell" class="shell">
         <div id="ssh-message">
@@ -108,7 +117,8 @@
             await sleep(1500);
             await playShellAnimation();
             await sleep(400);
-            await playTypingAnimation();
+            // await playTypingAnimation(); 
+            window.location.href = "/home";
         }
 
         function init() {
