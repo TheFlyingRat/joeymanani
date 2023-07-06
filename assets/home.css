@@ -19,12 +19,12 @@ html, body {
 
 #name span {
     display: inline-block;
-    transition: transform 0.125s ease-in-out;
+    transition: transform 0.01s ease-in-out;
     vertical-align: bottom;
 }
 
 #name span:hover {
-    transform: translateY(-15px);
+    transform: scale(1.2);
 }
 
 
