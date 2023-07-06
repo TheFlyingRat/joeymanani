@@ -15,8 +15,8 @@ document.addEventListener('keydown', event => {
         hideArrow(links[currentLinkIndex]);
         currentLinkIndex = (currentLinkIndex + 1) % links.length;
         showArrow(links[currentLinkIndex]);
-    } else if (event.key === 'ArrowUp') {
-        // Otherwise if arrow up is pressed do this stuff, self explanatory
+    } else if (event.key === 'ArrowUp' || (event.shiftKey && event.key === 'Tab')) {
+        // If arrow up or Shift+Tab is pressed, go backwards
         playSound("click");
         hideArrow(links[currentLinkIndex]);
         currentLinkIndex = (currentLinkIndex - 1 + links.length) % links.length;
@@ -74,7 +74,7 @@ function showArrow(link) {
     link.classList.add('current');
 }
 
-// Bouncy title animation thingy
+// Bouncy title animation thingy preparation (splitting it into spans)
 const name = document.getElementById("name");
 let text = name.innerHTML;
 name.innerHTML = "";
