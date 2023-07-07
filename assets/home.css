@@ -19,7 +19,7 @@ html, body {
 
 #name span {
     display: inline-block;
-    transition: transform 0.01s ease-in-out;
+    transition: transform 0.0685s ease-in-out;
     vertical-align: bottom;
 }
 
@@ -27,12 +27,12 @@ html, body {
     transform: scale(1.2);
 }
 
-
 .code-comment {
     font-size: 2.2rem !important;
     color: gray;
     font-family: monospace !important;;
     width: fit-content;
+    transition: font-size 0.0685s ease-in-out;
 }
 
 .content > a {
@@ -48,7 +48,11 @@ html, body {
 
 .content a:hover,
 .content a.current {
-  font-size: calc(2.2rem + 0.5rem) !important;
+    font-size: calc(2.2rem + 0.5rem) !important;
+}
+
+.fa-arrow-right {
+    transition: opacity 0.0685s ease-in-out;
 }
 
 
