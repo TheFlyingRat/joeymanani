@@ -55,10 +55,12 @@ links.forEach((link, index) => {
     // Listens for the mouse to go over it
     link.addEventListener('mouseover', event => {
         // Self explanatory
+        if (currentLinkIndex !== index) {
+            playSound("click");
+        }
         hideArrow(links[currentLinkIndex]);
         currentLinkIndex = index;
         showArrow(links[currentLinkIndex]);
-        playSound("click");
     });
 });
 
