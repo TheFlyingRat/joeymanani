@@ -35,7 +35,7 @@ td.experience-year:first-child {
 .line {
     height: 100%; /* set the height of the line to 100% */
     position: absolute;
-    top: 18px;
+    top: 21px;
     left: 50%;
     transform: translateX(-50%);
     border-left: 4px solid #ddd;
