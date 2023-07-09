@@ -60,14 +60,15 @@ function handleMouseover(event) {
 // Handle user clicking logo
 function handleGoHome(event) {
     window.location.href = "/home";
-    event.target.style.cursor = "pointer";
 }
 
 // Toggle selection of the two buttons
 function toggleSelection(newSelectedBtn) {
+    if (selectedBtn !== newSelectedBtn) {
+        playSound("click"); // only play sound if they button selection is different
+    }
     selectedBtn.classList.remove("current");
     selectedBtn = newSelectedBtn;
     selectedClass = selectedBtn.id;
     selectedBtn.classList.add("current");
-    playSound("click");
 }
