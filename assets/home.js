@@ -6,28 +6,31 @@ let currentLinkIndex = 0;
 
 // Listen for a keydown event
 document.addEventListener('keydown', event => {
-    // Prevent arrow keys scrolling down the page (default behavior) 
-    event.preventDefault();
     // If down arrow pressed
     if (event.key === 'ArrowDown') {
         // Do this stuff, self explanatory
+        // Prevent arrow keys scrolling down the page (default behavior) 
+        event.preventDefault();
         playSound("click");
         hideArrow(links[currentLinkIndex]);
         currentLinkIndex = (currentLinkIndex + 1) % links.length;
         showArrow(links[currentLinkIndex]);
     } else if (event.key === 'ArrowUp' || (event.shiftKey && event.key === 'Tab')) {
         // If arrow up or Shift+Tab is pressed, go backwards
+        event.preventDefault();
         playSound("click");
         hideArrow(links[currentLinkIndex]);
         currentLinkIndex = (currentLinkIndex - 1 + links.length) % links.length;
         showArrow(links[currentLinkIndex]);
     } else if (event.key === 'Tab') {
+        event.preventDefault();
         playSound("click");
         hideArrow(links[currentLinkIndex]);
         currentLinkIndex = (currentLinkIndex + 1) % links.length;
         showArrow(links[currentLinkIndex]);
     } else if (event.key === 'Enter') {
         // However if enter was pressed, redirect to the highlighted link
+        event.preventDefault();
         playSound("success");
         document.getElementById("body-container").style.opacity = 0;
         setTimeout(() => {
@@ -40,7 +43,7 @@ document.addEventListener('keydown', event => {
 links.forEach((link, index) => {
     // Listens for a mouse click
     link.addEventListener('click', event => {
-        // Prevent arrow keys scrolling down the page (default behavior)
+        // Just to be safe, preventDefault
         event.preventDefault();
         // Self explanatory
         hideArrow(links[currentLinkIndex]);
