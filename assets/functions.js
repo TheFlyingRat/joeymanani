@@ -90,7 +90,7 @@ audioFiles.forEach(sound => {
 // Play a sound from the in-memory cache
 function playSound(sound) {
   try {
-    var playPromise;
+    let playPromise;
     if (audioThread1.paused) {
       audioThread1.src = audioBlobURLs[sound];
       playPromise = audioThread1.play();
@@ -99,9 +99,15 @@ function playSound(sound) {
       playPromise = audioThread2.play();
     }
 
-    if (playPromise !== undefined) {
+    if (playPromise) {
       playPromise.catch(function (error) {
-        console.log("User didn't interact. Can't play sound!");
+        if (error.name === 'NotAllowedError') {
+          console.log("User didn't interact. Can't play sound!");
+          // Handle the case where the user didn't interact
+        } else {
+          console.log("Error playing sound: " + error);
+          // Handle other playback errors
+        }
       });
     }
   } catch (error) {
