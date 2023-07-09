@@ -4,7 +4,6 @@ function getDateDifference(date) {
     let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     let diffMonths = 0;
     let diffYears = 0;
-
     while (diffDays >= 365) {
         let year = (new Date(targetDate.getFullYear() + diffYears + 1, 0, 0)).getTime() - (new Date(targetDate.getFullYear() + diffYears, 0, 0)).getTime();
         let daysInYear = Math.floor(year / (1000 * 60 * 60 * 24));
@@ -15,7 +14,6 @@ function getDateDifference(date) {
         break;
         }
     }
-
     while (diffDays >= 30) {
         let month = new Date(targetDate.getFullYear() + diffYears, targetDate.getMonth() + diffMonths + 1, 0).getDate();
         if (diffDays >= month) {
@@ -25,7 +23,6 @@ function getDateDifference(date) {
         break;
         }
     }
-
     return {
         days: diffDays,
         months: diffMonths,
@@ -33,89 +30,105 @@ function getDateDifference(date) {
     };
 }
 
+// Sleep function
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // Audio object
 const audioThread1 = new Audio();
 const audioThread2 = new Audio();
 
-// Preload the audio files into memory cache and store them in local storage
+// In-memory cache for the audio files
+const audioCache = {};
+
+// Preload the audio files into memory cache and create Blob URLs
 async function preloadAudio(sound) {
   try {
-    const response = await fetch("https://cdn.theflyingrat.com/assets/joeymanani/assets/" + sound + ".wav");
-    const arrayBuffer = await response.arrayBuffer();
-    const base64Data = arrayBufferToBase64(arrayBuffer);
-    localStorage.setItem(sound, base64Data);
+    if (audioCache[sound]) {
+      // Audio data already exists in cache
+      return;
+    }
+
+    const base64Data = localStorage.getItem(sound);
+    if (base64Data) {
+      const blob = base64ToBlob(base64Data);
+      audioCache[sound] = URL.createObjectURL(blob); // Create Blob URL
+    } else {
+      console.log(`Audio data for ${sound} not found in localStorage.`);
+      await fetchAudioData(sound); // Fetch the missing audio data
+    }
   } catch (error) {
     console.log("Error preloading audio: " + error);
   }
 }
 
-// Convert an ArrayBuffer to a Base64 string
-function arrayBufferToBase64(arrayBuffer) {
-  const bytes = new Uint8Array(arrayBuffer);
-  let binary = "";
-  for (let i = 0; i < bytes.length; i++) {
-    binary += String.fromCharCode(bytes[i]);
+// Fetch the audio data from the server
+async function fetchAudioData(sound) {
+  try {
+    const response = await fetch("https://cdn.theflyingrat.com/assets/joeymanani/assets/" + sound + ".wav");
+    const arrayBuffer = await response.arrayBuffer();
+    const blob = new Blob([arrayBuffer], { type: "audio/wav" });
+    const reader = new FileReader();
+
+    reader.onload = function () {
+      const base64Data = reader.result;
+      audioCache[sound] = URL.createObjectURL(blob); // Create Blob URL
+      localStorage.setItem(sound, base64Data); // Store in localStorage
+    };
+
+    reader.readAsDataURL(blob);
+  } catch (error) {
+    console.log("Error fetching audio data: " + error);
   }
-  return btoa(binary);
 }
 
-// Convert a Base64 string to an ArrayBuffer
-function base64ToArrayBuffer(base64) {
-  const binary = atob(base64);
-  const bytes = new Uint8Array(binary.length);
-  for (let i = 0; i < binary.length; i++) {
-    bytes[i] = binary.charCodeAt(i);
-  }
-  return bytes.buffer;
-}
-
-// Preload all the audio files when the JS executes
-const audioFiles = ["click", "success", "alert", "enter", "backspace", "button"];
-audioFiles.forEach(sound => {
-  const cachedAudio = localStorage.getItem(sound);
-  if (!cachedAudio) {
+// Preload all the audio files when the page loads
+window.addEventListener("load", function() {
+  const sounds = ["click", "success", "alert", "enter", "backspace", "button"];
+  sounds.forEach((sound) => {
     preloadAudio(sound);
-  }
-});
-
-// Create Blob URLs for audio files
-const audioBlobURLs = {};
-audioFiles.forEach(sound => {
-  const base64Data = localStorage.getItem(sound);
-  const arrayBuffer = base64ToArrayBuffer(base64Data);
-  const audioBlob = new Blob([arrayBuffer], { type: "audio/wav" });
-  audioBlobURLs[sound] = URL.createObjectURL(audioBlob);
+  });
 });
 
 // Play a sound from the in-memory cache
 function playSound(sound) {
   try {
-    let playPromise;
-    if (audioThread1.paused) {
-      audioThread1.src = audioBlobURLs[sound];
-      playPromise = audioThread1.play();
+    if (audioCache[sound]) {
+      const audioElement = audioThread1.paused ? audioThread1 : audioThread2;
+      audioElement.src = audioCache[sound];
+      const playPromise = audioElement.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(function(error) {
+          console.log("User didn't interact with document!");
+        });
+      }
     } else {
-      audioThread2.src = audioBlobURLs[sound];
-      playPromise = audioThread2.play();
-    }
-
-    if (playPromise) {
-      playPromise.catch(function (error) {
-        if (error.name === 'NotAllowedError') {
-          console.log("User didn't interact. Can't play sound!");
-          // Handle the case where the user didn't interact
-        } else {
-          console.log("Error playing sound: " + error);
-          // Handle other playback errors
-        }
-      });
+      console.log(`Audio data for ${sound} not found in cache.`);
     }
   } catch (error) {
-    console.log("Couldn't play sound because of error: " + error);
+    console.log("Couldn't play sound because of an error: " + error);
   }
 }
 
-// Sleep function
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+// Helper function to convert base64 to Blob
+function base64ToBlob(base64Data) {
+  const parts = base64Data.split(';base64,');
+  const contentType = parts[0].split(':')[1];
+  const byteCharacters = atob(parts[1]);
+  const byteArrays = [];
+
+  for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+    const slice = byteCharacters.slice(offset, offset + 512);
+    const byteNumbers = new Array(slice.length);
+
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+
+  return new Blob(byteArrays, { type: contentType });
 }
