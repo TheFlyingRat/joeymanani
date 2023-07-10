@@ -30,6 +30,29 @@ function getDateDifference(date) {
     };
 }
 
+// Check if user is a desktop user theflyingrat/joeymanani #9
+function isDesktopUser() {
+  // Feature detection: Check for touch support
+  var isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints);
+
+  // Responsive design technique: Check viewport width
+  var isViewportWideEnough = window.innerWidth >= 1024;
+
+  // Laptop check: Check if device is not a touchscreen laptop
+  var isLaptop = window.matchMedia('(hover: hover)').matches || window.matchMedia('(hover: none)').matches;
+
+  // Check for smaller laptop screens
+  var isSmallLaptop = window.innerWidth < 1024 && window.innerHeight < 768;
+
+  // Return true if any of the desktop conditions are met
+  if (!isTouchDevice && isViewportWideEnough && (isLaptop || isSmallLaptop)) {
+    return true;
+  }
+
+  // Assume as mobile user if unable to determine
+  return false;
+}
+
 // Sleep function
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -90,6 +113,8 @@ window.addEventListener("load", function() {
     preloadAudio(sound);
   });
 });
+// The above could be migrated to a main.js file 
+
 
 // Play a sound from the in-memory cache
 function playSound(sound) {
