@@ -89,9 +89,9 @@ async function preloadAudio(sound) {
 // Fetch the audio data from the server
 async function fetchAudioData(sound) {
   try {
-    const response = await fetch("https://cdn.theflyingrat.com/assets/joeymanani/assets/" + sound + ".wav");
+    const response = await fetch("https://cdn.theflyingrat.com/assets/joeymanani/assets/" + sound + ".mp3");
     const arrayBuffer = await response.arrayBuffer();
-    const blob = new Blob([arrayBuffer], { type: "audio/wav" });
+    const blob = new Blob([arrayBuffer], { type: "audio/mpeg" });
     const reader = new FileReader();
 
     reader.onload = function () {
