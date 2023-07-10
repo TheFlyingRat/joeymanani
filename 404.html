@@ -1,11 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Joey Manani</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 Test</title>
+    <link rel="preconnect" href="https://cdn.theflyingrat.com">
+    <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
+    <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
+    <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/loadingPage.min.css">
+    <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/main.min.css">
+    <link rel="preload" as="style" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/fonts.min.css">
+    <link rel="preload" as="script" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/functions.min.js">
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/functions.min.js">
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/home.min.js">
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/main.min.css">    
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/home.min.css">    
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/fonts.min.css">
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/js/smoothScroll.min.js"> 
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/logo.png">    
+    <link rel="prefetch" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/tryEnableSmoothScroll.min.js">    
+    <link rel="prerender" href="/home">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="viewport" content="height=device-height, initial-scale=1.0">
+    <meta name="name" content="Joey Manani">
+    <meta name="description" content="I'm Joey Manani, a 17-year-old software developer with a passion for technology and a love for learning. On my website, you can learn more about me, my experience and achievements, and check out my projects and work.    ">
+    <meta name="keywords" content="TheFlyingRat, Joey M, Software Developer, Web Development, Scripting languages, The, Flying, Rat, socials, youtube, snapchat, github">
+    <meta name="author" content="https://cdn.theflyingrat.com/humans.txt">
+    <script defer src="https://cdn.theflyingrat.com/assets/joeymanani/assets/typingAnimation.min.js"></script>
+    <script defer src="https://cdn.theflyingrat.com/assets/joeymanani/assets/animations.min.js"></script>
+    <script defer src="https://cdn.theflyingrat.com/assets/joeymanani/assets/functions.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/main.min.css">
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/loadingPage.min.css">
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/fonts.min.css">
 </head>
 <body>
-    <h1>404 Page Not Found</h1>
+    <div id="shell" class="shell">
+        <div id="ssh-message">
+        Linux joeymanani <span class="time-since-birthday">??.??.??</span> #1 <span id="current-date">??? ??? ? ??:??:?? GMT ????</span> x86_64
+        <br><br>
+        The programs included with the Debian GNU/Linux system are free software;<br>
+        the exact distribution terms for each program are described in the<br>
+        individual files in /usr/share/doc/*/copyright.
+        <br><br>
+        Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent<br>
+        permitted by applicable law.
+        <br>
+        </div>
+        <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ joey --version
+        <p>Joey <span class="time-since-birthday">??.??.??</span></p>
+        <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ whereis joey
+        <p>joey: /earth/australia/victoria</p>
+        <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ joey --help
+        <p>Usage: joey [options]</p>
+        <p>Options:</p>
+        <div class="shell-options">
+        <p>  --version</p>
+        <p>  --help</p>
+        <p>  --force-update</p>
+        <p>  --load</p>
+        </div>
+        <br>
+        <p>You are running Joey <span class="time-since-birthday">??.??.??</span></p>
+        <p>Press any key to skip animations!</p>
+        <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ joey --load
+        <br>
+        <span id="shell-response">
+            <br>
+            [INFO] Loading joeymanani.com...<br>
+            [INFO] Initializing assets...<br>
+            [INFO] Opening program...<br>
+            <br>
+            [INFO] Looking for "<span class="currentURL"></span>"<br>
+            joeymanani: <span id="pathName"></span>: No such file or directory<br><br>
+            [FAIL] joeymanani could not not find "<span class="currentURL"></span>" (404)<br><br>
+        </span>
+        <br>
+    </div>
+
+
+    <script>
+        // Do not use in prod yet
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get('myParam');
+
+        const pathName = window.location.pathname.substring(1);
+        const href = window.location.href;
+        const currentURL = document.getElementsByClassName("currentURL");
+        document.getElementById("pathName").innerHTML = pathName;
+        for (let i = 0; i < currentURL.length; i++) {
+            currentURL[i].innerHTML = href;
+        }
+
+
+        function getDateDifference(date) {
+            const targetDate = new Date(1148169600000);
+            let diffTime = date - targetDate;
+            let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            let diffMonths = 0;
+            let diffYears = 0;
+            while (diffDays >= 365) {
+                let year = (new Date(targetDate.getFullYear() + diffYears + 1, 0, 0)).getTime() - (new Date(targetDate.getFullYear() + diffYears, 0, 0)).getTime();
+                let daysInYear = Math.floor(year / (1000 * 60 * 60 * 24));
+                if (diffDays >= daysInYear) {
+                diffYears++;
+                diffDays -= daysInYear;
+                } else {
+                break;
+                }
+            }
+            while (diffDays >= 30) {
+                let month = new Date(targetDate.getFullYear() + diffYears, targetDate.getMonth() + diffMonths + 1, 0).getDate();
+                if (diffDays >= month) {
+                diffMonths++;
+                diffDays -= month;
+                } else {
+                break;
+                }
+            }
+            return {
+                days: diffDays,
+                months: diffMonths,
+                years: diffYears
+            };
+        }
+
+        // Create a new data object, get its difference between my birthday and convert it to human readable
+        const date = new Date();
+        const difference = getDateDifference(date);
+        const dateString = date.toUTCString();
+
+        // Get each elem of my birthday string and the string where the human readable date is required
+        const timeSinceBirthdayString = document.getElementsByClassName("time-since-birthday"); // Could use querySelector
+        const currentDateString = document.getElementById("current-date");
+
+        // Change the current date string to the current date human readable
+        currentDateString.innerHTML = dateString;
+
+        // Update each elem which calculates how long its been since my birthday with my birthday
+        for (let i = 0; i < timeSinceBirthdayString.length; i++) {
+            timeSinceBirthdayString[i].innerHTML = `${difference.years}.${difference.months}.${difference.days}`;
+        }
+    </script>
 </body>
 </html>
