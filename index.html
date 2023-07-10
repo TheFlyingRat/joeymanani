@@ -34,7 +34,7 @@
     <meta name="author" content="https://cdn.theflyingrat.com/humans.txt">
     <script defer src="https://cdn.theflyingrat.com/assets/joeymanani/assets/typingAnimation.min.js"></script>
     <script defer src="https://cdn.theflyingrat.com/assets/joeymanani/assets/animations.min.js"></script>
-    <script src="https://cdn.theflyingrat.com/assets/joeymanani/assets/functions.min.js"></script>
+    <script defer src="https://cdn.theflyingrat.com/assets/joeymanani/assets/functions.min.js"></script>
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/main.min.css">
@@ -98,6 +98,38 @@
     <!-- add animations to the above icons -->
 
     <script>
+        function getDateDifference(date) {
+            const targetDate = new Date(1148169600000);
+            let diffTime = date - targetDate;
+            let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            let diffMonths = 0;
+            let diffYears = 0;
+            while (diffDays >= 365) {
+                let year = (new Date(targetDate.getFullYear() + diffYears + 1, 0, 0)).getTime() - (new Date(targetDate.getFullYear() + diffYears, 0, 0)).getTime();
+                let daysInYear = Math.floor(year / (1000 * 60 * 60 * 24));
+                if (diffDays >= daysInYear) {
+                diffYears++;
+                diffDays -= daysInYear;
+                } else {
+                break;
+                }
+            }
+            while (diffDays >= 30) {
+                let month = new Date(targetDate.getFullYear() + diffYears, targetDate.getMonth() + diffMonths + 1, 0).getDate();
+                if (diffDays >= month) {
+                diffMonths++;
+                diffDays -= month;
+                } else {
+                break;
+                }
+            }
+            return {
+                days: diffDays,
+                months: diffMonths,
+                years: diffYears
+            };
+        }
+
         // Create a new data object, get its difference between my birthday and convert it to human readable
         const date = new Date();
         const difference = getDateDifference(date);
