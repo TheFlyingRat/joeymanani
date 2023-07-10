@@ -1,9 +1,7 @@
 // Use smooth scroll if on desktop else don't
-function tryEnableSmoothScroll(speed, scrollBy) {
-    if (is.desktop()) {
+(function tryEnableSmoothScroll(speed, scrollBy) {
+    if (isDesktopUser()) {
         new smoothScroll(document, speed, scrollBy);
     }
-}
-
-// Allow smooth scrolling on the document
-tryEnableSmoothScroll(50, 30);
+})(50, 30);
+// Allow smooth scrolling on the document (IIFE)
