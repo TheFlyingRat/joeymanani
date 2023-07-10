@@ -6,6 +6,9 @@ const forwardBtn = document.getElementById("forwardBtn");
 let selectedBtn = backBtn;
 let selectedClass = "backBtn";
 
+// theflyingrat/joeymanani #11 - prevent audio playing when the button is clicked (use a flag)
+let audioEnabled = true;
+
 // Add event listeners for keydown and mouseover
 document.addEventListener("keydown", handleKeydown);
 document.addEventListener("keydown", handleEnterKey);
@@ -34,7 +37,8 @@ function handleKeydown(event) {
 // Handle enter key press
 function handleEnterKey(event) {
     if (event.keyCode === 13 && selectedBtn.classList.contains("current")) {
-        playSound("success");
+        audioEnabled ? playSound("success") : null;
+        audioEnabled = false;
         document.getElementById("body-container").style.opacity = 0;
         setTimeout(() => {
             window.location.href = selectedBtn.href;
@@ -45,7 +49,8 @@ function handleEnterKey(event) {
 // Handle click event (same as above just no if check)
 function handleClick(event) {
     event.preventDefault();
-    playSound("success");
+    audioEnabled ? playSound("success") : null;
+    audioEnabled = false;
     document.getElementById("body-container").style.opacity = 0;
     setTimeout(() => {
         window.location.href = selectedBtn.href;
@@ -65,7 +70,7 @@ function handleGoHome(event) {
 // Toggle selection of the two buttons
 function toggleSelection(newSelectedBtn) {
     if (selectedBtn !== newSelectedBtn) {
-        playSound("click"); // only play sound if they button selection is different
+        audioEnabled ? playSound("click") : null; // only play sound if they button selection is different
     }
     selectedBtn.classList.remove("current");
     selectedBtn = newSelectedBtn;

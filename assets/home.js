@@ -4,6 +4,9 @@ const links = document.querySelectorAll('.content a');
 // Current link index that the mouse is at (0,1,2,3 thus 4 links)
 let currentLinkIndex = 0;
 
+// theflyingrat/joeymanani #11 - Fix bug when sound effect still plays when page fades out (use a flag)
+let audioEnabled = true;
+
 // Listen for a keydown event
 document.addEventListener('keydown', event => {
     // If down arrow pressed
@@ -11,27 +14,28 @@ document.addEventListener('keydown', event => {
         // Do this stuff, self explanatory
         // Prevent arrow keys scrolling down the page (default behavior) 
         event.preventDefault();
-        playSound("click");
+        audioEnabled ? playSound("click") : null;
         hideArrow(links[currentLinkIndex]);
         currentLinkIndex = (currentLinkIndex + 1) % links.length;
         showArrow(links[currentLinkIndex]);
     } else if (event.key === 'ArrowUp' || (event.shiftKey && event.key === 'Tab')) {
         // If arrow up or Shift+Tab is pressed, go backwards
         event.preventDefault();
-        playSound("click");
+        audioEnabled ? playSound("click") : null;
         hideArrow(links[currentLinkIndex]);
         currentLinkIndex = (currentLinkIndex - 1 + links.length) % links.length;
         showArrow(links[currentLinkIndex]);
     } else if (event.key === 'Tab') {
         event.preventDefault();
-        playSound("click");
+        audioEnabled ? playSound("click") : null;
         hideArrow(links[currentLinkIndex]);
         currentLinkIndex = (currentLinkIndex + 1) % links.length;
         showArrow(links[currentLinkIndex]);
     } else if (event.key === 'Enter') {
         // However if enter was pressed, redirect to the highlighted link
         event.preventDefault();
-        playSound("success");
+        audioEnabled ? playSound("success") : null;
+        audioEnabled = false;
         document.getElementById("body-container").style.opacity = 0;
         setTimeout(() => {
             window.location.href = links[currentLinkIndex].href;
@@ -49,7 +53,8 @@ links.forEach((link, index) => {
         hideArrow(links[currentLinkIndex]);
         currentLinkIndex = index;
         showArrow(links[currentLinkIndex]);
-        playSound("success");
+        audioEnabled ? playSound("success") : null;
+        audioEnabled = false;
         document.getElementById("body-container").style.opacity = 0;
         setTimeout(() => {
             window.location.href = link.href;
@@ -59,7 +64,7 @@ links.forEach((link, index) => {
     link.addEventListener('mouseover', event => {
         // Self explanatory
         if (currentLinkIndex !== index) {
-            playSound("click");
+            audioEnabled ? playSound("click") : null;
         }
         hideArrow(links[currentLinkIndex]);
         currentLinkIndex = index;
