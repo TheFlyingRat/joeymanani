@@ -48,7 +48,7 @@
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/loadingPage.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/fonts.min.css">
 </head>
-<body onload="init();">
+<body>
     <div id="shell" class="shell">
         <div id="ssh-message">
         Linux joeymanani <span class="time-since-birthday">??.??.??</span> #1 <span id="current-date">??? ??? ? ??:??:?? GMT ????</span> x86_64
@@ -99,51 +99,37 @@
     <!-- add animations to the above icons -->
 
     <script>
-
         // Create a new data object, get its difference between my birthday and convert it to human readable
         const date = new Date();
         const difference = getDateDifference(date);
         const dateString = date.toUTCString();
 
         // Get each elem of my birthday string and the string where the human readable date is required
-        const timeSinceBirthdayString = document.getElementsByClassName("time-since-birthday");
+        const timeSinceBirthdayString = document.getElementsByClassName("time-since-birthday"); // Could use querySelector
         const currentDateString = document.getElementById("current-date");
 
+        // Change the current date string to the current date human readable
+        currentDateString.innerHTML = dateString;
 
         // Update each elem which calculates how long its been since my birthday with my birthday
         for (let i = 0; i < timeSinceBirthdayString.length; i++) {
             timeSinceBirthdayString[i].innerHTML = `${difference.years}.${difference.months}.${difference.days}`;
         }
 
-        // Change the current date string to the current date human readable
-        currentDateString.innerHTML = dateString;
 
-        // Press any key to skip animations
-        document.onkeypress = function(event) {
-            console.log("Skipping animation since key was pressed!!")
-            window.location.href = "/home";
-        };
-
-        // Play animations
-        async function playAnimations() {
-            console.log('Commencing animations!')
+        window.onload = async () => {
+            // Executes on body load
+            console.log("Finished loading.")
+            // Press any key to skip animations declaration. Must be when page is loaded to prevent user redirect while page still loading
+            document.onkeypress = (event) => {
+                console.log("Skipping animation since key was pressed!!")
+                window.location.href = "/home";
+            };
             await sleep(1500);
+            console.log('Commencing animations!')
             await playShellAnimation();
             await sleep(400);
             await playTypingAnimation(); 
-            // window.location.href = "/home";
-        }
-
-        function init() {
-            // Executes on body load
-            console.log("Finished loading.")
-
-
-            console.log("'Pages had an internal error, if this persists please contact support!'")
-            console.log("FORCING A REBUILD!!!!")
-
-
-            playAnimations();
         }
     </script>
 </body>
