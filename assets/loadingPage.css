@@ -11,10 +11,10 @@
 
 body {
     overflow-x: hidden;
+    height: initial !important;
 }
 
 .shell {
-    height: 100vh;
     width: 100vw;
     font-family: 'Source Code Pro', monospace;
     cursor: default;
