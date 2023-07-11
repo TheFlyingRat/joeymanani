@@ -29,26 +29,15 @@ function executeCommand() {
     // Check if the command function exists
     if (typeof window[command] === "function") {
       // Dynamically call the command function with the args
-      stdout = window[command](args);
+      stdout = window[command](args); // Don't worry about the commands in this file. Capital letters don't exist in the console
+
     } else {
-      stdout = "Unknown command: " + command;
+      stdout = `-bash: ${command}: command not found`
     }
   }
 
   readyConsole(stdin, stdout);
 }
-
-// Example command functions
-function command1(args) {
-  // Handle command1 with args
-  return "Command 1 executed with args: " + args.join(", ");
-}
-
-function command2(args) {
-  // Handle command2 with args
-  return "Command 2 executed with args: " + args.join(", ");
-}
-
 
 
 function removeLastCharacter() {
@@ -72,6 +61,7 @@ async function readyConsole(stdin, stdout) {
   
   // Add the commandOutput to the console's "stdout"
   const commandOutput = document.createElement("div");
+  commandOutput.style.whiteSpace = "pre";
   commandOutput.innerHTML = `${stdout}`;
   shellContainer.appendChild(commandOutput);
   
@@ -91,12 +81,10 @@ async function readyConsole(stdin, stdout) {
 
 
 
-
-
 const getNthCmd = (n) => {
   let minIndex = -(commandHistory.length);
   let maxIndex = 1;
-  let new_n = n;
+  let new_n = n; // Since n is a param and global, create local variable new_n for validation. I could probably fix this later, but this isn't a problem right now.
   
   if (n >= maxIndex) {
     new_n -= 1;
@@ -105,34 +93,35 @@ const getNthCmd = (n) => {
   } else {
     new_n = n;
   }
-  console.log(new_n);
-  console.log(commandHistory.at(new_n));
   return [new_n, commandHistory.at(new_n)];
 };
 
 
 document.addEventListener("keydown", (e) => {
-  e.preventDefault(); // Prevent default browser behavior
-
   const key = e.key;
 
   // Handle different key inputs
   if (key === "Enter") {
+    e.preventDefault(); // Prevent default browser behavior
     n = 0; // Reset n to 0
     executeCommand();
   } else if (key === "Backspace") {
+    e.preventDefault(); // Prevent default browser behavior
     removeLastCharacter();
   } else if (key === "ArrowUp") {
+    e.preventDefault(); // Prevent default browser behavior
     n -= 1;
     nthElem = getNthCmd(n);
     n = nthElem[0]
     shellCmd.innerHTML = nthElem[1];
   } else if (key === "ArrowDown") {
+    e.preventDefault(); // Prevent default browser behavior
     n += 1;
     nthElem = getNthCmd(n);
     n = nthElem[0]
     shellCmd.innerHTML = nthElem[1];
   } else if (e.ctrlKey && e.key === "c") {
+    e.preventDefault(); // Prevent default browser behavior
     writeInput("^C");
     readyConsole("^C", "");
   } else if (!e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
