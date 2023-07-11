@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/main.min.css">
-    <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/loadingPage.min.css">
+    <link rel="stylesheet" href="/assets/loadingPage.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/fonts.min.css">
 </head>
 <body>
@@ -74,18 +74,20 @@
             [INFO] Opening program...<br>
             <br>
             [INFO] Looking for "<span class="currentURL"></span>"<br>
-            joeymanani: <span id="pathName"></span>: No such file or directory<br><br>
-            [FAIL] joeymanani could not not find "<span class="currentURL"></span>" (404)<br><br>
+            joey: <span id="pathName"></span>: No such file or directory<br><br>
+            [FAIL] joey could not not find "<span class="currentURL"></span>" (404)<br><br>
         </span>
-        <br>
+        <div id="currentCommand"><span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="typed-shell-command" style="white-space: pre; word-wrap: break-word;"></span>_</div>
     </div>
+
+    <script src="/assets/shell.js"></script>
 
 
     <script>
         // Do not use in prod yet
         const urlParams = new URLSearchParams(window.location.search);
         const myParam = urlParams.get('myParam');
-
+        
         const pathName = window.location.pathname.substring(1);
         const href = window.location.href;
         const currentURL = document.getElementsByClassName("currentURL");
