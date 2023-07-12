@@ -27,13 +27,13 @@
     <meta name="description" content="I'm Joey Manani, a 17-year-old software developer with a passion for technology and a love for learning. On my website, you can learn more about me, my experience and achievements, and check out my projects and work.    ">
     <meta name="keywords" content="TheFlyingRat, Joey M, Software Developer, Web Development, Scripting languages, The, Flying, Rat, socials, youtube, snapchat, github">
     <meta name="author" content="https://cdn.theflyingrat.com/humans.txt">
-    <script defer src="https://cdn.theflyingrat.com/assets/joeymanani/assets/typingAnimation.min.js"></script>
-    <script defer src="https://cdn.theflyingrat.com/assets/joeymanani/assets/animations.min.js"></script>
     <script defer src="https://cdn.theflyingrat.com/assets/joeymanani/assets/functions.min.js"></script>
+    <script defer src="/assets/error.min.js"></script>
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/css/skeleton.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/main.min.css">
     <link rel="stylesheet" href="/assets/loadingPage.min.css">
+    <link rel="stylesheet" href="/assets/error.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/fonts.min.css">
 </head>
 <body>
@@ -73,79 +73,31 @@
             [INFO] Initializing assets...<br>
             [INFO] Opening program...<br>
             <br>
-            [INFO] Looking for "<span class="currentURL"></span>"<br>
-            joey: <span id="pathName"></span>: No such file or directory<br><br>
-            [FAIL] joey could not not find "<span class="currentURL"></span>" (404)<br><br>
+            <span id="looking" class="typing-cursor-animation">[INFO] Looking for "<span class="currentURL"></span>"</span>
+            <br>
+            <span id="output" class="hidden">joey: <span id="pathName"></span>: <span id="errorMsg"></span></span>
+            <br><br>
+            <span id="find" class="hidden">[FAIL] joey <span id="errorDesc">could not not find</span> "<span class="currentURL"></span>"</span>
+            <br><br>
+            <span id="prompt" class="hidden">[INFO] Prompting user for options...</span>
         </span>
-        <div id="currentCommand"><span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="typed-shell-command" style="white-space: pre; word-wrap: break-word;"></span>_</div>
     </div>
 
-    <script src="/assets/shell.js"></script>
-    <script src="/assets/commands.js"></script>
-
-
-    <script>
-        // Do not use in prod yet
-        const urlParams = new URLSearchParams(window.location.search);
-        const myParam = urlParams.get('myParam');
-        
-        const pathName = window.location.pathname.substring(1);
-        const href = window.location.href;
-        const currentURL = document.getElementsByClassName("currentURL");
-        document.getElementById("pathName").innerHTML = pathName;
-        for (let i = 0; i < currentURL.length; i++) {
-            currentURL[i].innerHTML = href;
-        }
-
-
-        function getDateDifference(date) {
-            const targetDate = new Date(1148169600000);
-            let diffTime = date - targetDate;
-            let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            let diffMonths = 0;
-            let diffYears = 0;
-            while (diffDays >= 365) {
-                let year = (new Date(targetDate.getFullYear() + diffYears + 1, 0, 0)).getTime() - (new Date(targetDate.getFullYear() + diffYears, 0, 0)).getTime();
-                let daysInYear = Math.floor(year / (1000 * 60 * 60 * 24));
-                if (diffDays >= daysInYear) {
-                diffYears++;
-                diffDays -= daysInYear;
-                } else {
-                break;
-                }
-            }
-            while (diffDays >= 30) {
-                let month = new Date(targetDate.getFullYear() + diffYears, targetDate.getMonth() + diffMonths + 1, 0).getDate();
-                if (diffDays >= month) {
-                diffMonths++;
-                diffDays -= month;
-                } else {
-                break;
-                }
-            }
-            return {
-                days: diffDays,
-                months: diffMonths,
-                years: diffYears
-            };
-        }
-
-        // Create a new data object, get its difference between my birthday and convert it to human readable
-        const date = new Date();
-        const difference = getDateDifference(date);
-        const dateString = date.toUTCString();
-
-        // Get each elem of my birthday string and the string where the human readable date is required
-        const timeSinceBirthdayString = document.getElementsByClassName("time-since-birthday"); // Could use querySelector
-        const currentDateString = document.getElementById("current-date");
-
-        // Change the current date string to the current date human readable
-        currentDateString.innerHTML = dateString;
-
-        // Update each elem which calculates how long its been since my birthday with my birthday
-        for (let i = 0; i < timeSinceBirthdayString.length; i++) {
-            timeSinceBirthdayString[i].innerHTML = `${difference.years}.${difference.months}.${difference.days}`;
-        }
-    </script>
+    <div id="menuWrapper" class="hidden noselect">
+        <div id="menu">
+          <div class="imageContainer">
+            <img class="menuBackground" src="/assets/base_menu.png" draggable="false">
+            <span class="menuTitle">Joey encountered an error during that operation!</span>
+            <div class="menuBody">
+                <p id="menuDescription">d</p>
+                <p id="menuMessage">m</p>
+                <br>
+                <p id="menuResolution">r</p>
+                <br><br>
+                <span id="optionBack" style="margin-right: 20%" class="selected">&lt;Go back&gt;</span><span id="optionHome">&lt;Go home&gt;</span>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 </html>
