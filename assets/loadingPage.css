@@ -14,7 +14,7 @@ body {
     height: initial !important;
 }
 
-.shell {
+.shell, .menu {
     width: 100vw;
     font-family: 'Source Code Pro', monospace;
     cursor: default;
