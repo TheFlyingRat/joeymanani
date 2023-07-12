@@ -10,11 +10,11 @@
 
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
+    height: initial !important;
 }
 
-.shell {
-    height: 100vh;
+.shell, .menu {
     width: 100vw;
     font-family: 'Source Code Pro', monospace;
     cursor: default;
@@ -39,11 +39,11 @@ body {
     padding-left: 2em;
 }
 
-.shell > .green {
+.green {
     color: #79dd33;
 }
 
-.shell > .blue {
+.blue {
     color: #3d5e82;
 }
 
