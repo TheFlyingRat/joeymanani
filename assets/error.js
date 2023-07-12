@@ -85,11 +85,11 @@ function handleErrorCode(code) {
 
     const errorCode = errorMessages[code] || {};
 
-    elements.errorMsg.innerHTML = errorCode.errorMsg || "An error occurred";
-    elements.errorDesc.innerHTML = errorCode.errorDesc || "did not know how to interpret";
-    elements.menuDescription.innerHTML = errorCode.desc || "An unknown error occurred";
-    elements.menuMessage.innerHTML = errorCode.message || "The application encountered an unspecified error!";
-    elements.menuResolution.innerHTML = errorCode.resolution || "Please try again or contact the administrator for assistance!";
+    elements.errorMsg.innerHTML = errorCode.errorMsg || "No such file or directory";
+    elements.errorDesc.innerHTML = errorCode.errorDesc || "could not find";
+    elements.menuDescription.innerHTML = errorCode.desc || "The application encountered a 404 error (No such file or directory)";
+    elements.menuMessage.innerHTML = errorCode.message || "This means the file either no longer exists or the URL is incorrect!";
+    elements.menuResolution.innerHTML = errorCode.resolution || "Use your keyboard or mouse to select an option!";
 }
 
 function getDateDifference(date) {
