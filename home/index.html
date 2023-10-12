@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/main.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/home.min.css">
     <link rel="stylesheet" href="https://cdn.theflyingrat.com/assets/joeymanani/assets/fonts.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.slim.min.js"></script>
+    <script src="http://benahm.github.io/jquery.throwable/javascripts/jquery.throwable.js"></script> 
+
     <style>
         body {
             background-color: #121212;
@@ -45,6 +48,26 @@
       window.onload = function() {
           document.getElementById("body-container").style.opacity = 1;
       }
+    </script>
+
+    <script>
+        function toggleGravity() {
+            $("#name").css("width","fit-content")
+            $("#name").throwable({
+                drag:true,
+                gravity:{x:0,y:8},
+                impulse:{
+                    f:50,
+                    p:{x:1,y:1}
+                },
+                autostart:true,
+                bounce:0.22,
+                damping:15,
+                collisionDetection: false
+            });
+            $(".code-comment").css("display","none");
+        }
+        toggleGravity()
     </script>
 </body>
 </html>
