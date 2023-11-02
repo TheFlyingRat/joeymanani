@@ -7,8 +7,7 @@
     X-Contacted: EDGE
     X-Made-With: Love <3
     Referrer-Policy: strict-origin-when-cross-origin
-    # Allow unsafe inline content
-    Content-Security-Policy: default-src 'self' https: data: blob: 'unsafe-inline'; frame-ancestors 'self';
+    Content-Security-Policy: default-src 'self' https: data: blob: ; frame-ancestors 'self'; style-src https://cdn.theflyingrat.com 'unsafe-inline' ; script-src https://cdn.theflyingrat.com 'unsafe-inline';
     Permissions-Policy: interest-cohort=()
     Strict-Transport-Security: max-age=31536000; includeSubDomains
     Access-Control-Allow-Origin: null
