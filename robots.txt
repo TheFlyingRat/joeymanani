@@ -1,3 +1,4 @@
+Sitemap: https://joeymanani.com/sitemap.xml
 User-agent: *
 Disallow: /assets
 Allow: /home
@@ -6,4 +7,3 @@ Allow: /developer
 Allow: /projects
 Allow: /about
 Allow: /
-
