@@ -10,8 +10,15 @@ const scrollToBottom = () => {
   document.documentElement.scrollTop = document.documentElement.scrollHeight;
 };
 
-
-
+// Known command names for tab completion
+const knownCommands = [
+  "help", "ls", "cat", "cd", "pwd", "clear", "exit", "home", "logout",
+  "echo", "whoami", "hostname", "uname", "date", "uptime", "history",
+  "id", "who", "neofetch", "quote", "fortune", "insult", "ping",
+  "cowsay", "sudo", "rm", "touch", "mkdir", "mv", "cp", "chcon",
+  "chmod", "chown", "yes", "factor", "seq", "rev", "xeyes", "man",
+  "htop", "df", "env", "printenv"
+];
 
 
 function executeCommand() {
@@ -52,7 +59,53 @@ function writeInput(key) {
 function escapeHtml(str) {
   const div = document.createElement("div");
   div.textContent = str;
-  return div.innerHTML;
+  return div.textContent.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function buildPromptLine(stdin) {
+  const line = document.createElement("div");
+  const prompt = document.createElement("span");
+  prompt.className = "green";
+  prompt.textContent = "you@joeymanani.com";
+  line.appendChild(prompt);
+  line.appendChild(document.createTextNode(":"));
+  const tilde = document.createElement("span");
+  tilde.className = "blue";
+  tilde.textContent = "~";
+  line.appendChild(tilde);
+  line.appendChild(document.createTextNode("$ "));
+  const cmd = document.createElement("span");
+  cmd.id = "previous-shell-command";
+  cmd.style.whiteSpace = "pre";
+  cmd.style.wordWrap = "break-word";
+  cmd.textContent = stdin;
+  line.appendChild(cmd);
+  return line;
+}
+
+function buildCommandLine() {
+  const line = document.createElement("div");
+  line.id = "currentCommand";
+  const prompt = document.createElement("span");
+  prompt.className = "green";
+  prompt.textContent = "you@joeymanani.com";
+  line.appendChild(prompt);
+  line.appendChild(document.createTextNode(":"));
+  const tilde = document.createElement("span");
+  tilde.className = "blue";
+  tilde.textContent = "~";
+  line.appendChild(tilde);
+  line.appendChild(document.createTextNode("$ "));
+  const input = document.createElement("span");
+  input.id = "typed-shell-command";
+  input.style.whiteSpace = "pre";
+  input.style.wordWrap = "break-word";
+  line.appendChild(input);
+  const cursor = document.createElement("span");
+  cursor.className = "cursor";
+  cursor.textContent = "_";
+  line.appendChild(cursor);
+  return line;
 }
 
 async function readyConsole(stdin, stdout) {
@@ -61,23 +114,17 @@ async function readyConsole(stdin, stdout) {
   shellContainer.removeChild(document.getElementById("currentCommand"))
 
   // Migrate the old typed command to a static element above — stdin is escaped to prevent XSS
-  const previousLine = document.createElement("div");
-  const promptHtml = '<span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="previous-shell-command" style="white-space: pre; word-wrap: break-word;">' + escapeHtml(stdin) + '</span>';
-  previousLine.innerHTML = promptHtml;
-  shellContainer.appendChild(previousLine);
+  shellContainer.appendChild(buildPromptLine(stdin));
 
   // Add the commandOutput to the console's "stdout"
   const commandOutput = document.createElement("div");
   commandOutput.style.whiteSpace = "pre";
   commandOutput.textContent = stdout;
   shellContainer.appendChild(commandOutput);
-  
+
   // Create a new element for user to type in
-  const commandLine = document.createElement("div");
-  commandLine.id = "currentCommand"
-  commandLine.innerHTML = `<span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="typed-shell-command" style="white-space: pre; word-wrap: break-word;"></span>_`;
-  shellContainer.appendChild(commandLine);
-  
+  shellContainer.appendChild(buildCommandLine());
+
   // Since typed-shell-command element changed, redefine it
   shellCmd = document.getElementById("typed-shell-command");
   previousCmd = document.querySelectorAll("#previous-shell-command");
@@ -85,17 +132,33 @@ async function readyConsole(stdin, stdout) {
 }
 
 
+function tabComplete() {
+  const input = shellCmd.textContent;
+  // Only complete the first token (command name)
+  const tokens = input.split(" ");
+  if (tokens.length > 1) return; // Don't complete args
 
+  const partial = tokens[0];
+  if (partial === "") return;
+
+  const matches = knownCommands.filter(cmd => cmd.startsWith(partial));
+  if (matches.length === 1) {
+    shellCmd.textContent = matches[0];
+  } else if (matches.length > 1) {
+    // Show possible completions
+    readyConsole(input, matches.join("  "));
+  }
+}
 
 
 const getNthCmd = (n) => {
   let minIndex = -(commandHistory.length);
   let maxIndex = 1;
   let new_n = n; // Since n is a param and global, create local variable new_n for validation. I could probably fix this later, but this isn't a problem right now.
-  
+
   if (n >= maxIndex) {
     new_n -= 1;
-  } else if (n <= minIndex) { 
+  } else if (n <= minIndex) {
     new_n += 1;
   } else {
     new_n = n;
@@ -115,6 +178,9 @@ document.addEventListener("keydown", (e) => {
   } else if (key === "Backspace") {
     e.preventDefault(); // Prevent default browser behavior
     removeLastCharacter();
+  } else if (key === "Tab") {
+    e.preventDefault();
+    tabComplete();
   } else if (key === "ArrowUp") {
     e.preventDefault(); // Prevent default browser behavior
     n -= 1;
@@ -127,12 +193,18 @@ document.addEventListener("keydown", (e) => {
     nthElem = getNthCmd(n);
     n = nthElem[0]
     shellCmd.textContent = nthElem[1];
-  } else if (e.ctrlKey && e.key === "c") {
+  } else if (e.ctrlKey && key === "c") {
     e.preventDefault(); // Prevent default browser behavior
     writeInput("^C");
     readyConsole("^C", "");
-  } else if (!e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
+  } else if (e.ctrlKey && key === "l") {
+    e.preventDefault();
+    clear([]);
+  } else if (e.ctrlKey && key === "u") {
+    e.preventDefault();
+    shellCmd.textContent = "";
+  } else if (key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+    // Accept any printable character (length === 1), including shifted chars like !, @, ?
     writeInput(key);
   }
 });
-
