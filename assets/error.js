@@ -85,11 +85,11 @@ function handleErrorCode(code) {
 
     const errorCode = errorMessages[code] || {};
 
-    elements.errorMsg.innerHTML = errorCode.errorMsg || "No such file or directory";
-    elements.errorDesc.innerHTML = errorCode.errorDesc || "could not find";
-    elements.menuDescription.innerHTML = errorCode.desc || "The application encountered a 404 error (No such file or directory)";
-    elements.menuMessage.innerHTML = errorCode.message || "This means the file either no longer exists or the URL is incorrect!";
-    elements.menuResolution.innerHTML = errorCode.resolution || "Use your keyboard or mouse to select an option!";
+    elements.errorMsg.textContent = errorCode.errorMsg || "No such file or directory";
+    elements.errorDesc.textContent = errorCode.errorDesc || "could not find";
+    elements.menuDescription.textContent = errorCode.desc || "The application encountered a 404 error (No such file or directory)";
+    elements.menuMessage.textContent = errorCode.message || "This means the file either no longer exists or the URL is incorrect!";
+    elements.menuResolution.textContent = errorCode.resolution || "Use your keyboard or mouse to select an option!";
 }
 
 function getDateDifference(date) {
@@ -139,17 +139,17 @@ const timeSinceBirthdayStrings = document.getElementsByClassName("time-since-bir
 const currentDateString = document.getElementById("current-date");
 
 // Change the current date string to the current date human readable
-currentDateString.innerHTML = dateString;
+currentDateString.textContent = dateString;
 
 // Update each elem which calculates how long its been since my birthday with my birthday
 Array.from(timeSinceBirthdayStrings).forEach((elem) => {
-elem.innerHTML = `${difference.years}.${difference.months}.${difference.days}`;
+elem.textContent = `${difference.years}.${difference.months}.${difference.days}`;
 });
 
-document.getElementById("pathName").innerHTML = pathName;
+document.getElementById("pathName").textContent = pathName;
 
 Array.from(currentURL).forEach((elem) => {
-elem.innerHTML = href;
+elem.textContent = href;
 });
 
 let selection = 0;
