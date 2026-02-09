@@ -61,6 +61,16 @@ i {
     display: inline;
 }
 
+.shell-link {
+    margin-top: 2vh;
+    color: #555 !important;
+}
+
+.shell-link:hover,
+.shell-link.current {
+    color: #79dd33 !important;
+}
+
 
 
 @media only screen and (max-width: 1400px) {
