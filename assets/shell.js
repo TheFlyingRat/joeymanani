@@ -49,20 +49,27 @@ function writeInput(key) {
   shellCmd.textContent += key;
 }
 
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
 async function readyConsole(stdin, stdout) {
 
   // We must remove the old command (since that's still intractable, we replace it below with a static copy)
   shellContainer.removeChild(document.getElementById("currentCommand"))
-  
-  // Migrate the old typed command to a static element above
+
+  // Migrate the old typed command to a static element above — stdin is escaped to prevent XSS
   const previousLine = document.createElement("div");
-  previousLine.innerHTML = `<span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="previous-shell-command" style="white-space: pre; word-wrap: break-word;">${stdin}</span>`;
+  const promptHtml = '<span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="previous-shell-command" style="white-space: pre; word-wrap: break-word;">' + escapeHtml(stdin) + '</span>';
+  previousLine.innerHTML = promptHtml;
   shellContainer.appendChild(previousLine);
-  
+
   // Add the commandOutput to the console's "stdout"
   const commandOutput = document.createElement("div");
   commandOutput.style.whiteSpace = "pre";
-  commandOutput.innerHTML = `${stdout}`;
+  commandOutput.textContent = stdout;
   shellContainer.appendChild(commandOutput);
   
   // Create a new element for user to type in
@@ -113,13 +120,13 @@ document.addEventListener("keydown", (e) => {
     n -= 1;
     nthElem = getNthCmd(n);
     n = nthElem[0]
-    shellCmd.innerHTML = nthElem[1];
+    shellCmd.textContent = nthElem[1];
   } else if (key === "ArrowDown") {
     e.preventDefault(); // Prevent default browser behavior
     n += 1;
     nthElem = getNthCmd(n);
     n = nthElem[0]
-    shellCmd.innerHTML = nthElem[1];
+    shellCmd.textContent = nthElem[1];
   } else if (e.ctrlKey && e.key === "c") {
     e.preventDefault(); // Prevent default browser behavior
     writeInput("^C");

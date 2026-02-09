@@ -14,13 +14,13 @@ async function type(id, text, speed) {
           setTimeout(() => {
             playSound("enter");
             typingCursor.classList.remove("typing-cursor-animation");
-            textPlaceholder.innerHTML += "<br>";
+            textPlaceholder.appendChild(document.createElement("br"));
             charsTyped++;
             typingPaused = false;
           }, 1000); // Delay of 30 milliseconds after typing the line break
         } else {
           playSound("button");
-          textPlaceholder.innerHTML += text.charAt(charsTyped);
+          textPlaceholder.appendChild(document.createTextNode(text.charAt(charsTyped)));
           charsTyped++;
         }
       } else if (charsTyped === text.length) {
