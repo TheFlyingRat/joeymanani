@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- [F] -->
+    <title>Terminal</title>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://cdn.theflyingrat.com">
+    <link rel="preconnect" href="https://api.theflyingrat.com">
+    <link rel="icon" type="image/x-icon" href="https://cdn.theflyingrat.com/images/joeymanani/favicon.ico">
+    <meta name="viewport" content="height=device-height, initial-scale=1.0">
+    <meta name="name" content="Terminal">
+    <meta name="description" content="Interactive terminal on joeymanani.com">
+    <meta name="robots" content="noindex">
+    <script defer src="/assets/functions.js"></script>
+    <script defer src="/assets/commands.js"></script>
+    <script defer src="/assets/shell.js"></script>
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/css/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.theflyingrat.com/css/skeleton.min.css">
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/loadingPage.css">
+    <link rel="stylesheet" href="/assets/fonts.css">
+    <link rel="stylesheet" href="/assets/shell.css">
+    <style>
+        body {
+            background-color: #121212;
+            opacity: 0.001;
+            transition: opacity 600ms;
+        }
+    </style>
+</head>
+<body id="body-container">
+    <div id="shell" class="shell">
+        <div id="ssh-message">
+        Linux joeymanani <span class="time-since-birthday">??.??.??</span> #1 <span id="current-date">??? ??? ? ??:??:?? GMT ????</span> x86_64
+        <br><br>
+        The programs included with the Debian GNU/Linux system are free software;<br>
+        the exact distribution terms for each program are described in the<br>
+        individual files in /usr/share/doc/*/copyright.
+        <br><br>
+        Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent<br>
+        permitted by applicable law.
+        <br>
+        <span id="last-login-line">Last login: <span id="last-login">???</span> from <span id="login-host">???</span></span>
+        <br>
+        </div>
+        <br>
+        <p>Type <span class="hint">'help'</span> for available commands.</p>
+        <br>
+        <div id="currentCommand"><span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="typed-shell-command" style="white-space: pre; word-wrap: break-word;"></span><span class="cursor">_</span></div>
+    </div>
+
+    <script>
+    // Birthday calculation (same as landing page)
+    const BIRTHDAY = 1148169600000;
+    const now = new Date();
+    const targetDate = new Date(BIRTHDAY);
+    let diffTime = now - targetDate;
+    let diffDays = Math.floor(diffTime / 86400000);
+    let diffMonths = 0, diffYears = 0;
+    while (diffDays >= 365) {
+        const yr = (new Date(targetDate.getFullYear() + diffYears + 1, 0, 0)).getTime() - (new Date(targetDate.getFullYear() + diffYears, 0, 0)).getTime();
+        const diy = Math.floor(yr / 86400000);
+        if (diffDays >= diy) { diffYears++; diffDays -= diy; } else break;
+    }
+    while (diffDays >= 30) {
+        const month = new Date(targetDate.getFullYear() + diffYears, targetDate.getMonth() + diffMonths + 1, 0).getDate();
+        if (diffDays >= month) { diffMonths++; diffDays -= month; } else break;
+    }
+    const versionStr = diffYears + "." + diffMonths + "." + diffDays;
+
+    document.querySelectorAll(".time-since-birthday").forEach(el => { el.textContent = versionStr; });
+    document.getElementById("current-date").textContent = now.toUTCString();
+
+    // Generate a plausible "last login" timestamp
+    const lastLogin = new Date(Date.now() - Math.floor(Math.random() * 86400000 * 3 + 3600000));
+    document.getElementById("last-login").textContent = lastLogin.toString().replace(/\s*\(.*\)/, "");
+    document.getElementById("login-host").textContent = window.location.hostname;
+
+    window.onload = function() {
+        document.getElementById("body-container").style.opacity = 1;
+    }
+    </script>
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b3b04857a4f7456d84c29d92268a8438"}'></script>
+</body>
+</html>
