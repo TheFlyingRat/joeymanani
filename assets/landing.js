@@ -48,6 +48,17 @@ for (let i = 0; i < timeSinceBirthdayString.length; i++) {
 }
 
 
+// Bottom button click handlers (moved from inline onclick)
+document.getElementById("contact").parentElement.addEventListener("click", function () {
+    window.location.href = "mailto:contact@joeymanani.com";
+});
+document.getElementById("links").parentElement.addEventListener("click", function () {
+    document.location.href = "https://tfrs.link/links";
+});
+document.getElementById("skip-button").parentElement.addEventListener("click", function () {
+    document.location.href = "/home";
+});
+
 window.onload = async () => {
     document.getElementsByTagName("body")[0].style.opacity = 1;
     // Executes on body load
@@ -61,6 +72,6 @@ window.onload = async () => {
     console.log('Commencing animations!')
     await playShellAnimation();
     await sleep(400);
-    await playTypingAnimation(); 
+    await playTypingAnimation();
 }
 

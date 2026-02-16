@@ -49,37 +49,7 @@
         <div id="currentCommand"><span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="typed-shell-command" style="white-space: pre; word-wrap: break-word;"></span><span class="cursor">_</span></div>
     </div>
 
-    <script>
-    // Birthday calculation (same as landing page)
-    const BIRTHDAY = 1148169600000;
-    const now = new Date();
-    const targetDate = new Date(BIRTHDAY);
-    let diffTime = now - targetDate;
-    let diffDays = Math.floor(diffTime / 86400000);
-    let diffMonths = 0, diffYears = 0;
-    while (diffDays >= 365) {
-        const yr = (new Date(targetDate.getFullYear() + diffYears + 1, 0, 0)).getTime() - (new Date(targetDate.getFullYear() + diffYears, 0, 0)).getTime();
-        const diy = Math.floor(yr / 86400000);
-        if (diffDays >= diy) { diffYears++; diffDays -= diy; } else break;
-    }
-    while (diffDays >= 30) {
-        const month = new Date(targetDate.getFullYear() + diffYears, targetDate.getMonth() + diffMonths + 1, 0).getDate();
-        if (diffDays >= month) { diffMonths++; diffDays -= month; } else break;
-    }
-    const versionStr = diffYears + "." + diffMonths + "." + diffDays;
-
-    document.querySelectorAll(".time-since-birthday").forEach(el => { el.textContent = versionStr; });
-    document.getElementById("current-date").textContent = now.toUTCString();
-
-    // Generate a plausible "last login" timestamp
-    const lastLogin = new Date(Date.now() - Math.floor(Math.random() * 86400000 * 3 + 3600000));
-    document.getElementById("last-login").textContent = lastLogin.toString().replace(/\s*\(.*\)/, "");
-    document.getElementById("login-host").textContent = window.location.hostname;
-
-    window.onload = function() {
-        document.getElementById("body-container").style.opacity = 1;
-    }
-    </script>
+    <script src="https://cdn.theflyingrat.com/js/joeymanani/shell-init.min.js"></script>
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b3b04857a4f7456d84c29d92268a8438"}'></script>
 </body>
 </html>
