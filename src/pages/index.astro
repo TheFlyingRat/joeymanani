@@ -10,6 +10,8 @@ import ShellBlock from '../components/ShellBlock.astro';
     noFoucTransition
     viewport="height=device-height, initial-scale=1.0"
 >
+    <link slot="head" rel="preconnect" href="https://api.theflyingrat.com" crossorigin>
+    <main>
     <ShellBlock>
         <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="shell-placeholder"></span><span id="shell-cursor">_</span>
         <br>
@@ -21,12 +23,13 @@ import ShellBlock from '../components/ShellBlock.astro';
             <span id="title-placeholder"></span><span id="typing-cursor" class="typing-cursor-animation">|</span>
         </div>
     </div>
+    </main>
 
-    <div class="bottom-buttons">
+    <footer class="bottom-buttons">
         <button title="Contact Me"><span id="contact" class="icon-mail"></span></button>
         <button title="Online Profiles"><span id="links" class="icon-plus"></span></button>
         <button title="Skip Animations - Load main content"><span id="skip-button" class="icon-fast-fw"></span></button>
-    </div>
+    </footer>
 
     <script>
         import '../scripts/landing';

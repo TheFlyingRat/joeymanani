@@ -17,10 +17,10 @@ const { title, description, prevHref, nextHref } = Astro.props;
     <slot name="head" slot="head" />
     <div id="main">
         <Titlebar />
-        <div class="content">
+        <main class="content">
             <Navigation title={title} prevHref={prevHref} nextHref={nextHref} />
             <slot />
-        </div>
+        </main>
     </div>
     <script>
         import '../scripts/menuHandler';

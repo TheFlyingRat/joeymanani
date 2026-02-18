@@ -12,13 +12,15 @@ import Titlebar from '../components/Titlebar.astro';
     <div id="main" class="noselect">
         <Titlebar />
 
-        <div class="content" style="padding-bottom: 0px;">
+        <main class="content" style="padding-bottom: 0px;">
             <table class="experience-table">
                     <tr class="table-heading noselect">
                         <td class="experience-year"></td>
-                        <td id="nav">
-                            <a href="/about" draggable="false" id="backBtn" class="nav-link current">Prev</a>
-                            <a href="/home" draggable="false" id="forwardBtn" class="nav-link">Next</a>
+                        <td>
+                            <nav id="nav" aria-label="Page navigation">
+                                <a href="/about" draggable="false" id="backBtn" class="nav-link current">Prev</a>
+                                <a href="/home" draggable="false" id="forwardBtn" class="nav-link">Next</a>
+                            </nav>
                             <h1 style="width: fit-content">Experience & Achievements</h1>
                         </td>
                     </tr>
@@ -153,7 +155,7 @@ import Titlebar from '../components/Titlebar.astro';
                         </td>
                     </tr>
                 </table>
-            </div>
+            </main>
         </div>
 
     <script>

@@ -8,8 +8,8 @@ interface Props {
 const { title, prevHref, nextHref } = Astro.props;
 ---
 
-<div id="nav" class="noselect">
+<nav id="nav" class="noselect" aria-label="Page navigation">
     <a href={prevHref} draggable="false" id="backBtn" class="nav-link current">Prev</a>
     <a href={nextHref} draggable="false" id="forwardBtn" class="nav-link">Next</a>
     <h1 style="width: fit-content">{title}</h1>
-</div>
+</nav>
