@@ -1,3 +1,19 @@
+import clickUrl from '../assets/audio/click.mp3';
+import successUrl from '../assets/audio/success.mp3';
+import alertUrl from '../assets/audio/alert.mp3';
+import enterUrl from '../assets/audio/enter.mp3';
+import backspaceUrl from '../assets/audio/backspace.mp3';
+import buttonUrl from '../assets/audio/button.mp3';
+
+const soundUrls: Record<string, string> = {
+  click: clickUrl,
+  success: successUrl,
+  alert: alertUrl,
+  enter: enterUrl,
+  backspace: backspaceUrl,
+  button: buttonUrl,
+};
+
 const audioThread1 = new Audio();
 const audioThread2 = new Audio();
 const audioCache: Record<string, string> = {};
@@ -22,7 +38,7 @@ function base64ToBlob(base64Data: string): Blob {
 
 async function fetchAudioData(sound: string): Promise<void> {
   try {
-    const response = await fetch('/audio/' + sound + '.mp3');
+    const response = await fetch(soundUrls[sound]);
     const arrayBuffer = await response.arrayBuffer();
     const blob = new Blob([arrayBuffer], { type: 'audio/mpeg' });
     const reader = new FileReader();
