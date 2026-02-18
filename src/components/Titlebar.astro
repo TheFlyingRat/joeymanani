@@ -1,7 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import logoImage from '../assets/images/logo.png';
 ---
 
 <div class="titlebar noselect">
-    <img src={logoImage.src} alt="Logo" draggable="false" class="logo">
+    <Image src={logoImage} alt="Logo" draggable="false" loading="eager" class="logo" />
 </div>
