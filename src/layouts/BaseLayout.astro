@@ -1,0 +1,53 @@
+---
+import '../styles/main.scss';
+import '../styles/fonts.css';
+
+interface Props {
+  title: string;
+  description: string;
+  bodyId?: string;
+  bodyClass?: string;
+  noFoucTransition?: boolean;
+  viewport?: string;
+}
+
+const {
+  title,
+  description,
+  bodyId,
+  bodyClass,
+  noFoucTransition = false,
+  viewport = 'width=device-width, initial-scale=1.0',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>{title}</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="viewport" content={viewport}>
+    <meta name="name" content={title}>
+    <meta name="description" content={description}>
+    <meta name="keywords" content="TheFlyingRat, Joey M, Software Developer, Web Development, Scripting languages, The, Flying, Rat, socials, youtube, snapchat, github">
+    <meta name="author" content="Joey Manani">
+    <style is:inline>
+        body {
+            background-color: #121212;
+            opacity: 0.001;
+            transition: opacity 600ms;
+        }
+    </style>
+    {noFoucTransition && (
+        <style is:inline>
+            body { transition: none; overflow: hidden; }
+        </style>
+    )}
+    <slot name="head" />
+</head>
+<body id={bodyId} class={bodyClass}>
+    <slot />
+    <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b3b04857a4f7456d84c29d92268a8438"}'></script>
+</body>
+</html>

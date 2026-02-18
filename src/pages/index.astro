@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ShellBlock from '../components/ShellBlock.astro';
+---
+
+<BaseLayout
+    title="Joey Manani"
+    description="I'm Joey Manani, a software developer and cybersecurity expert with a passion for technology and a love for learning. On my website, you can learn more about me, my experience and achievements, and check out my projects and work."
+    bodyClass="page-landing"
+    noFoucTransition
+    viewport="height=device-height, initial-scale=1.0"
+>
+    <ShellBlock>
+        <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ <span id="shell-placeholder"></span><span id="shell-cursor">_</span>
+        <br>
+        <span id="shell-response"></span>
+    </ShellBlock>
+
+    <div id="heading" class="heading noselect hidden">
+        <div class="title">
+            <span id="title-placeholder"></span><span id="typing-cursor" class="typing-cursor-animation">|</span>
+        </div>
+    </div>
+
+    <div class="bottom-buttons">
+        <button title="Contact Me"><span id="contact" class="icon-mail"></span></button>
+        <button title="Online Profiles"><span id="links" class="icon-plus"></span></button>
+        <button title="Skip Animations - Load main content"><span id="skip-button" class="icon-fast-fw"></span></button>
+    </div>
+
+    <script>
+        import '../scripts/landing';
+    </script>
+</BaseLayout>

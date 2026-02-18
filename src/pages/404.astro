@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ShellBlock from '../components/ShellBlock.astro';
+import { Image } from 'astro:assets';
+import baseMenuImage from '../assets/images/base_menu.png';
+---
+
+<BaseLayout
+    title="An error occurred"
+    description="I'm Joey Manani, a software developer and cybersecurity expert with a passion for technology and a love for learning. On my website, you can learn more about me, my experience and achievements, and check out my projects and work."
+    bodyClass="page-error"
+    viewport="height=device-height, initial-scale=1.0"
+>
+    <ShellBlock>
+        <span class="green">you@joeymanani.com</span>:<span class="blue">~</span>$ joey --load
+        <br>
+        <span id="shell-response">
+            <br>
+            [INFO] Loading joeymanani.com...<br>
+            [INFO] Initializing assets...<br>
+            [INFO] Opening program...<br>
+            <br>
+            <span id="looking" class="typing-cursor-animation">[INFO] Looking for "<span class="currentURL"></span>"</span>
+            <br>
+            <span id="output" class="hidden">joey: <span id="pathName"></span>: <span id="errorMsg"></span></span>
+            <br><br>
+            <span id="find" class="hidden">[FAIL] joey <span id="errorDesc"></span> "<span class="currentURL"></span>"</span>
+            <br><br>
+            <span id="prompt" class="hidden">[INFO] Prompting user for options...</span>
+        </span>
+    </ShellBlock>
+
+    <div id="menuWrapper" class="hidden noselect">
+        <div id="menu">
+          <div class="imageContainer">
+            <Image src={baseMenuImage} alt="Error dialog" draggable="false" loading="eager" class="menuBackground" />
+            <span class="menuTitle">Joey encountered an error during that operation!</span>
+            <div class="menuBody">
+                <p id="menuDescription">d</p>
+                <p id="menuMessage">m</p>
+                <br>
+                <p id="menuResolution">r</p>
+                <br><br>
+                <span id="optionBack" style="margin-right: 20%" class="selected">&lt;Go back&gt;</span><span id="optionHome">&lt;Go home&gt;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script>
+        import '../scripts/error';
+    </script>
+</BaseLayout>

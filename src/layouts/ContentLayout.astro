@@ -1,0 +1,30 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Titlebar from '../components/Titlebar.astro';
+import Navigation from '../components/Navigation.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  prevHref: string;
+  nextHref: string;
+}
+
+const { title, description, prevHref, nextHref } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} bodyId="body-container">
+    <slot name="head" slot="head" />
+    <div id="main">
+        <Titlebar />
+        <div class="content">
+            <Navigation title={title} prevHref={prevHref} nextHref={nextHref} />
+            <slot />
+        </div>
+    </div>
+    <script>
+        import '../scripts/menuHandler';
+        import { initSmoothScroll } from '../scripts/smoothScroll';
+        initSmoothScroll();
+    </script>
+</BaseLayout>

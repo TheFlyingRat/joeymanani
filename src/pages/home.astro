@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+    title="Home"
+    description="I'm Joey Manani, a software developer and cybersecurity expert with a passion for technology and a love for learning. On my website, you can learn more about me, my experience and achievements, and check out my projects and work."
+    bodyId="body-container"
+    bodyClass="noselect page-home"
+>
+    <div id="main">
+        <main>
+            <div class="content">
+                <h1 id="name">Joey Manani</h1>
+                <a href="/developer" draggable="false" class="code-comment current"><i class="icon-right"></i> Software Developer</a>
+                <a href="/about" draggable="false" class="code-comment"><i class="icon-right" style="opacity: 0"></i> About Me</a>
+                <a href="/experience" draggable="false" class="code-comment"><i class="icon-right" style="opacity: 0"></i> Experience & Achievements</a>
+                <a href="https://blog.joeymanani.com" draggable="false" class="code-comment"><i class="icon-right" style="opacity: 0"></i> Blog</a>
+                <a href="https://links.joeymanani.com" draggable="false" class="code-comment"><i class="icon-right" style="opacity: 0"></i> Find Me Online</a>
+                <a href="https://theflyingrat.com" draggable="false" class="code-comment"><i class="icon-right" style="opacity: 0"></i> TheFlyingRat</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        import '../scripts/home';
+    </script>
+</BaseLayout>

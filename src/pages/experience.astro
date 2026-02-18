@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Titlebar from '../components/Titlebar.astro';
+---
+
+<BaseLayout
+    title="Experience & Achievements"
+    description="My programming experience and life achievements"
+    bodyId="body-container"
+    bodyClass="page-experience"
+>
+    <div id="main" class="noselect">
+        <Titlebar />
+
+        <div class="content" style="padding-bottom: 0px;">
+            <table class="experience-table">
+                    <tr class="table-heading noselect">
+                        <td class="experience-year"></td>
+                        <td id="nav">
+                            <a href="/about" draggable="false" id="backBtn" class="nav-link current">Prev</a>
+                            <a href="/home" draggable="false" id="forwardBtn" class="nav-link">Next</a>
+                            <h1 style="width: fit-content">Experience & Achievements</h1>
+                        </td>
+                    </tr>
+
+                    <tr id="2025">
+                        <td class="experience-year">
+                            <div class="timeline-dot"></div>
+                        </td>
+                        <td>
+                            <h5 class="code-comment-heading">// 2025</h5>
+                            <p>Studying Computer Science (Cybersecurity)</p>
+                            <p>Proficiency in Ruby including Gosu</p>
+                            <p>Achieved the CCNA networking certificate</p>
+                            <p>Advanced in C# including Dotnet</p>
+                            <p>Basics in ARM assembly and super-low-level computing</p>
+                            <p>Full TFR network upgrade - Security, Tailscale, TLS Certificates, Redundancies, DNS server, Emails</p>
+                            <p>Created a self-hosted Home Assistant server</p>
+                            <p>Released PWMan - C# Password Manager</p>
+                            <p>Informal Tutoring</p>
+                            <p>Uni campus volunteering help</p>
+                            <p>Experienced with Amazon AWS (Cloud Architecting)</p>
+                            <p>Playing a significant amount of table tennis</p>
+                            <p>Perfect subject grades achieving a 4.0 GPA</p>
+                            <p>4,000 YouTube subscribers</p>
+                        </td>
+                    </tr>
+                    <tr id="2024">
+                        <td class="experience-year">
+                            <div class="timeline-dot"></div>
+                        </td>
+                        <td>
+                            <h5 class="code-comment-heading">// 2024</h5>
+                            <p>Revamping personal website with Svelte (in progress)</p>
+                            <p>Became a full-time Debian user as my main OS</p>
+                            <p>Started educating others in Python + general tech stuff</p>
+                            <p>Experimenting with, though not great, at CTF</p>
+                            <p>API upgrade</p>
+                            <p>Deployed a hub-and-spoke WireGuard network model to access network resources remotely</p>
+                            <p>Upgraded the TFR mail servers</p>
+                            <p>Released a proof-of-concept fullstack application, HiveHelper</p>
+                        </td>
+                    </tr>
+                    <tr id="2023">
+                        <td class="experience-year">
+                            <div class="timeline-dot"></div>
+                        </td>
+                        <td>
+                            <h5 class="code-comment-heading">// 2023</h5>
+                            <p>I started learning C# and plan to develop Windows as well as mobile apps</p>
+                            <p>Gave up learning C# however I did experiment with Rust and loved it</p>
+                            <p>Started to get into cybersecurity and privacy</p>
+                            <p>Created a custom WireGuard-based VPN to bypass tricky firewalls using websocket proxies</p>
+                            <p>Set up a TrueNAS server with Syncthing in a jail for remote synchronisation</p>
+                        </td>
+                    </tr>
+                    <tr id="2022">
+                        <td class="experience-year">
+                            <div class="timeline-dot"></div>
+                        </td>
+                        <td>
+                            <h5 class="code-comment-heading">// 2022</h5>
+                            <p>I became advanced in the Python programming language</p>
+                            <p>Released version 6 of my personal website introducing very advanced CSS, JavaScript and optimized HTML</p>
+                            <p>Network segregation: CDN, joeymanani.com, theflyingrat.com, subdomains, statics</p>
+                            <p>Network security and hacking - Reverse shell proof-of-concept script</p>
+                        </td>
+                    </tr>
+                    <tr id="2021">
+                        <td class="experience-year">
+                            <div class="timeline-dot"></div>
+                        </td>
+                        <td>
+                            <h5 class="code-comment-heading">// 2021</h5>
+                            <p>I started developing my online portfolio for professional use</p>
+                            <p>I placed first in an Australian national Python competition (Grok Learning)</p>
+                            <p>Received the St John Ambulance First Aid Certificate for basic emergency life support &amp; cardiopulmonary resuscitation</p>
+                            <p>Released version 5 of my personal website simplifying it and making it aesthetically pleasing</p>
+                        </td>
+                    </tr>
+                    <tr id="2020">
+                        <td class="experience-year">
+                            <div class="timeline-dot"></div>
+                        </td>
+                        <td>
+                            <h5 class="code-comment-heading">// 2020</h5>
+                            <p>I started learning the Python programming language by building a Discord bot</p>
+                            <p>I began working with Raspberry Pi's and electrical engineering</p>
+                            <p>Released revision 4 of my personal website, this time more of a backend update than a frontend utilizing a database and PHP</p>
+                        </td>
+                    </tr>
+                    <tr id="2019">
+                        <td class="experience-year">
+                            <div class="timeline-dot"></div>
+                        </td>
+                        <td>
+                            <h5 class="code-comment-heading">// 2019</h5>
+                            <p>Achieved 5th place in RoboCup state-wide Robotics Competition held in Melbourne, Australia</p>
+                            <p>Started revision 3 of my personal website, a modified template which used high contrast and advanced HTML features</p>
+                            <p>Expanded my web development knowledge by including JavaScript and advanced CSS in my projects</p>
+                        </td>
+                    </tr>
+                    <tr id="2018">
+                        <td class="experience-year">
+                            <div class="timeline-dot"></div>
+                        </td>
+                        <td>
+                            <h5 class="code-comment-heading">// 2018</h5>
+                            <p>RoboCup Mentor Award – Helping other students succeed in their robot builds and programs</p>
+                            <p>2nd place in RoboCup Robotics Competition – Building and programming a robot to follow a predetermined course and overcome obstacles in its path</p>
+                        </td>
+                    </tr>
+                    <tr id="2017">
+                        <td class="experience-year">
+                            <div class="timeline-dot"></div>
+                        </td>
+                        <td>
+                            <h5 class="code-comment-heading">// 2017</h5>
+                            <p>Started exploring robotics and their uses</p>
+                            <p>Experimented with Lego's EV3 robotics kit and made a working black and white printer</p>
+                            <p>Released revision 2 of my personal website with basic styles and HTML, a cream colored background with black text</p>
+                        </td>
+                    </tr>
+                    <tr id="2016">
+                        <td class="experience-year timeline-end">
+                            <div class="timeline-dot"></div>
+                        </td>
+                        <td style="padding-bottom: 100vh">
+                            <h5 class="code-comment-heading">// 2016</h5>
+                            <p>Started my web development journey</p>
+                            <p>Found my identity by fiddling with computers and making cool things happen</p>
+                            <p>Released revision 1 of my personal website - literally a coming soon page and figuring out how to make my website public</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    <script>
+        import '../scripts/menuHandler';
+        import { initSmoothScroll } from '../scripts/smoothScroll';
+        initSmoothScroll();
+
+        // Scroll reveal for timeline entries
+        const timelineRows = document.querySelectorAll<HTMLTableRowElement>('tr[id]');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -60px 0px',
+        });
+
+        timelineRows.forEach((row) => {
+            const contentCell = row.querySelector('td:last-child');
+            if (contentCell) {
+                Array.from(contentCell.children).forEach((child, index) => {
+                    (child as HTMLElement).style.transitionDelay = `${index * 0.07}s`;
+                });
+            }
+            observer.observe(row);
+        });
+    </script>
+</BaseLayout>

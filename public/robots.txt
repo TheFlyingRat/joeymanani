@@ -1,0 +1,7 @@
+Sitemap: https://joeymanani.com/sitemap.xml
+User-agent: *
+Allow: /home
+Allow: /experience
+Allow: /developer
+Allow: /about
+Allow: /
