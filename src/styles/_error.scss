@@ -1,0 +1,89 @@
+@use 'variables' as *;
+
+body.page-error {
+    overflow: hidden;
+}
+
+#menuWrapper {
+    background-color: $color-windows-blue;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    color: $color-text-dark;
+    overflow: hidden;
+    font-family: consolas, monospace;
+    transform: translate(-12px, -12px); /* body padding offset */
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2vw !important;
+}
+
+.imageContainer {
+    position: relative;
+}
+
+.menuTitle {
+    color: $color-windows-red;
+    position: absolute;
+    top: -0.5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menuBackground {
+    width: 85%;
+    image-rendering: crisp-edges;
+}
+
+.menuBody {
+    color: $color-text-dark;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menuBody > p {
+    margin-bottom: 0px;
+    text-align: center;
+    color: $color-text-dark;
+}
+
+.menuBody > span {
+    cursor: pointer;
+}
+
+.selected {
+    background-color: $color-windows-red;
+    color: #cccccc;
+}
+
+@media (max-width: 768px) {
+    .menuBackground {
+        min-width: 130vw;
+        min-height: 30vh;
+        image-rendering: crisp-edges;
+    }
+    #menu {
+        font-size: 2.5vw !important;
+    }
+}
+
+@media (min-width: 370px) and (max-width: 540px) {
+    #menu {
+        font-size: 2vw !important;
+    }
+}
+
+@media (min-width: 541px) and (max-width: 767px) {
+    #menu {
+        font-size: 1.4vw !important;
+    }
+}

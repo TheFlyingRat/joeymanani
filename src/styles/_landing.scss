@@ -1,0 +1,110 @@
+@use 'variables' as *;
+
+body.page-landing {
+    overflow-x: hidden;
+    height: initial !important;
+}
+
+.heading {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-content: center;
+}
+
+.shell, .menu {
+    width: 100vw;
+    font-family: 'Source Code Pro', monospace;
+    cursor: default;
+    font-size: 1.4rem;
+    line-height: 1.4;
+}
+
+::selection {
+    background-color: $color-text !important;
+    color: $color-text-dark !important;
+    cursor: default;
+}
+
+.shell > p, .shell > * > p {
+    margin-bottom: 0px;
+}
+
+.shell-options > p {
+    padding-left: 2em;
+}
+
+.green {
+    color: $color-terminal-green;
+}
+
+.blue {
+    color: $color-terminal-blue;
+}
+
+.heading > .title {
+    font-size: 44pt;
+    font-family: 'Source Code Pro', monospace;
+    text-align: center;
+}
+
+.typing-cursor-animation {
+    animation: blink-caret 1s step-end infinite;
+}
+
+.bottom-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 5px;
+    display: flex;
+}
+
+.bottom-buttons > button {
+    background-color: transparent;
+    font-family: 'Source Code Pro', monospace;
+    border: none;
+    color: #646669;
+    padding: 0;
+    font-size: 18px;
+    width: 40px;
+    height: 20px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.bottom-buttons > button > span:hover {
+    color: $color-text;
+    font-size: 20px;
+}
+
+@keyframes blink-caret {
+    from, to {
+        opacity: 0%;
+    }
+    50% {
+        opacity: 100%;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .heading > .title {
+        font-size: 32pt;
+    }
+
+    .shell {
+        font-size: 0.95rem;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .heading > .title {
+        font-size: 24pt;
+    }
+
+    .shell {
+        font-size: 0.73rem;
+    }
+}

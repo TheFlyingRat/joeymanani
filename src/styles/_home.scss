@@ -1,0 +1,104 @@
+@use 'variables' as *;
+
+body.page-home {
+    height: 100%;
+    overflow: hidden;
+
+    #main {
+        color: $color-text;
+        font-family: Inter, Arial, sans-serif;
+        margin-left: 30%;
+        margin-right: 15%;
+        margin-top: 4%;
+        overflow-y: hidden;
+    }
+
+    #name span {
+        display: inline-block;
+        transition: transform $transition-interactive;
+        vertical-align: bottom;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    .code-comment {
+        font-size: 2.2rem !important;
+        color: $color-comment;
+        font-family: monospace !important;
+        width: fit-content;
+        transition: font-size $transition-interactive;
+    }
+
+    .content > a {
+        display: block;
+        line-height: 8vh;
+        text-decoration: none;
+
+        &:hover {
+            color: $color-comment;
+            cursor: default !important;
+        }
+    }
+
+    .content a:hover,
+    .content a.current {
+        font-size: calc(2.2rem + 0.5rem) !important;
+    }
+
+    .fa-arrow-right {
+        transition: opacity $transition-interactive;
+    }
+
+    i {
+        transition: opacity 0.08s ease-in-out;
+        display: inline;
+    }
+}
+
+@media only screen and (max-width: $bp-wide) {
+    body.page-home {
+        .code-comment {
+            font-size: 1.8rem !important;
+        }
+
+        .content > a {
+            line-height: 5.5vh;
+        }
+
+        .content a:hover,
+        .content a.current {
+            font-size: 2.2rem !important;
+        }
+
+        #main {
+            margin-left: 10%;
+            margin-right: 2%;
+            margin-top: 4%;
+        }
+    }
+}
+
+@media only screen and (max-width: $bp-tablet) {
+    body.page-home {
+        .code-comment {
+            font-size: 1.4rem !important;
+        }
+
+        .content > a {
+            line-height: 4.2vh;
+        }
+
+        .content a:hover,
+        .content a.current {
+            font-size: 1.6rem !important;
+        }
+
+        #main {
+            margin-left: 1%;
+            margin-right: 6%;
+            margin-top: 3.3%;
+        }
+    }
+}

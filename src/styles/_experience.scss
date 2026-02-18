@@ -1,0 +1,169 @@
+@use 'variables' as *;
+
+body.page-experience {
+    color: $color-text;
+    font-family: Inter, Arial, sans-serif;
+
+    .content {
+        margin-top: 5%;
+        margin-left: 0%;
+        margin-right: 30%;
+    }
+}
+
+.experience-table {
+    border-spacing: 0;
+
+    th, td {
+        border-bottom: none;
+    }
+
+    tr {
+        height: 100%;
+    }
+}
+
+td.experience-year:first-child {
+    vertical-align: top;
+}
+
+.experience-year {
+    width: 20%;
+    text-align: center;
+    padding: 0;
+}
+
+/* Timeline dot */
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: $color-text;
+    margin: 6px auto 0;
+    position: relative;
+    z-index: 4;
+}
+
+/* Timeline line — drawn as cell background, no extra elements */
+tr[id] .experience-year {
+    background-image: linear-gradient($color-text, $color-text);
+    background-size: 4px calc(100% - 12px);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+
+/* Rows after first: line spans full cell height */
+tr[id] + tr[id] .experience-year {
+    background-size: 4px 100%;
+    background-position: center top;
+}
+
+/* Last row: dashed line */
+.timeline-end {
+    background-image: repeating-linear-gradient(
+        to bottom,
+        $color-text 0px, $color-text 8px,
+        transparent 8px, transparent 16px
+    ) !important;
+    background-size: 4px 100% !important;
+    background-position: center top !important;
+}
+
+.code-comment-heading {
+    color: $color-comment;
+    font-family: monospace !important;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+tr[id] td:last-child > p {
+    margin-bottom: 1.2rem;
+}
+
+/* Scroll reveal */
+tr[id] > td:last-child > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+tr[id].visible > td:last-child > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+tr[id] .timeline-dot {
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+tr[id].visible .timeline-dot {
+    transform: scale(1);
+}
+
+@media only screen and (max-width: $bp-tablet) {
+    body.page-experience .content {
+        margin-right: 10%;
+    }
+
+    .experience-year {
+        width: 15%;
+    }
+
+    .timeline-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    tr[id] .experience-year {
+        background-size: 3px calc(100% - 11px);
+    }
+
+    tr[id] + tr[id] .experience-year {
+        background-size: 3px 100%;
+    }
+
+    .timeline-end {
+        background-size: 3px 100% !important;
+    }
+
+    .code-comment-heading {
+        font-size: 1.8rem;
+    }
+}
+
+@media only screen and (max-width: $bp-mobile) {
+    body.page-experience .content {
+        margin-right: 5%;
+    }
+
+    .experience-year {
+        width: 12%;
+    }
+
+    .timeline-dot {
+        width: 8px;
+        height: 8px;
+        margin-top: 8px;
+    }
+
+    tr[id] .experience-year {
+        background-size: 2px calc(100% - 12px);
+    }
+
+    tr[id] + tr[id] .experience-year {
+        background-size: 2px 100%;
+    }
+
+    .timeline-end {
+        background-size: 2px 100% !important;
+    }
+
+    .code-comment-heading {
+        font-size: 1.6rem;
+    }
+
+    tr[id] td:last-child > p {
+        margin-bottom: 0.8rem;
+    }
+}

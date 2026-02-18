@@ -1,0 +1,7 @@
+@use 'variables' as *;
+
+.content h4 {
+    color: $color-comment;
+    font-family: monospace !important;
+    padding-top: 3%;
+}
