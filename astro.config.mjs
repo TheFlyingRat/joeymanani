@@ -75,6 +75,50 @@ function shortenAssetFilenames() {
             await writeFile(filePath, content);
           }
         }
+
+        // Inject <link rel="modulepreload"> for transitive JS chunk deps
+        const jsFiles = (await readdir(assetsDir)).filter(f => f.endsWith('.js'));
+        const jsContents = {};
+        for (const f of jsFiles) {
+          jsContents[f] = await readFile(join(assetsDir, f), 'utf-8');
+        }
+
+        /** Recursively collect chunk imports from a JS file */
+        function collectChunkDeps(filename, visited = new Set()) {
+          if (visited.has(filename)) return;
+          visited.add(filename);
+          const src = jsContents[filename];
+          if (!src) return;
+          const importRe = /from\s*["']\.\/([^"']+)["']/g;
+          let m;
+          while ((m = importRe.exec(src)) !== null) {
+            collectChunkDeps(m[1], visited);
+          }
+          return visited;
+        }
+
+        const htmlFiles = (await readdir(distDir)).filter(f => f.endsWith('.html'));
+        for (const htmlFile of htmlFiles) {
+          const htmlPath = join(distDir, htmlFile);
+          let html = await readFile(htmlPath, 'utf-8');
+          const scriptMatch = html.match(/<script\s+type="module"\s+src="\/_\/([^"]+)"/);
+          if (!scriptMatch) continue;
+
+          const entryFile = scriptMatch[1];
+          const deps = collectChunkDeps(entryFile);
+          if (!deps || deps.size <= 1) continue;
+
+          // Build modulepreload tags for all deps except the entry itself
+          const preloadTags = [...deps]
+            .filter(f => f !== entryFile)
+            .map(f => `<link rel="modulepreload" href="/_/${f}">`)
+            .join('');
+
+          if (preloadTags) {
+            html = html.replace('</head>', preloadTags + '</head>');
+            await writeFile(htmlPath, html);
+          }
+        }
       },
     },
   };

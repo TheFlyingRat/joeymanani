@@ -2,6 +2,11 @@ import { sleep, getDateDifference } from './utils';
 import { preloadAllAudio } from './audio';
 import { playShellAnimation, playTypingAnimation } from './animations';
 
+// Start quotes fetch immediately at module load (ready ~6s before needed)
+const quotesPromise = fetch('https://api.theflyingrat.com/siteinfo/quotes')
+  .then(res => res.ok ? res.json() : null)
+  .catch(() => null);
+
 // Calculate birthday difference
 const date = new Date();
 const difference = getDateDifference(date);
@@ -41,5 +46,5 @@ window.onload = async () => {
   await sleep(2250);
   await playShellAnimation();
   await sleep(400);
-  await playTypingAnimation();
+  await playTypingAnimation(quotesPromise);
 };

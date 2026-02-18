@@ -30,7 +30,9 @@ export async function playShellAnimation(): Promise<void> {
   headingWrapper.classList.remove('hidden');
 }
 
-export async function playTypingAnimation(): Promise<void> {
+export async function playTypingAnimation(
+  quotesPromise: Promise<unknown[] | null>,
+): Promise<void> {
   const fallbackQuotes = [
     '"The best way to predict the future is to create it."\n - Peter F. Drucker',
     '"Stay hungry, stay foolish."\n - Steve Jobs',
@@ -38,13 +40,8 @@ export async function playTypingAnimation(): Promise<void> {
   ];
 
   let quotes = fallbackQuotes;
-  try {
-    const res = await fetch('https://api.theflyingrat.com/siteinfo/quotes');
-    if (res.ok) {
-      const data = await res.json();
-      if (Array.isArray(data) && data.length > 0) quotes = data;
-    }
-  } catch {}
+  const data = await quotesPromise;
+  if (Array.isArray(data) && data.length > 0) quotes = data;
 
   const randomIndex = Math.floor(Math.random() * quotes.length);
   await type('title-placeholder', quotes[randomIndex], 78);
