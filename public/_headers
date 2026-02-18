@@ -7,7 +7,7 @@
     X-Contacted: EDGE
     X-Made-With: Love <3
     Referrer-Policy: strict-origin-when-cross-origin
-    Content-Security-Policy: default-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src https://api.theflyingrat.com https://static.cloudflareinsights.com; media-src blob:; frame-ancestors 'self'
+    Content-Security-Policy: default-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://api.theflyingrat.com https://static.cloudflareinsights.com; media-src blob:; frame-ancestors 'self'
     Permissions-Policy: interest-cohort=()
     Strict-Transport-Security: max-age=31536000; includeSubDomains
     Access-Control-Allow-Origin: null
