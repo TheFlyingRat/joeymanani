@@ -8,7 +8,13 @@ import ContentLayout from '../layouts/ContentLayout.astro';
     prevHref="/developer"
     nextHref="/experience"
 >
-    <p>Hello! I'm Joey Manani, a 19-year-old software developer and cybersecurity enthusiast with a passion for technology, creativity, and constant learning.</p>
+    <p>Hello! I'm Joey Manani, <span id="age-text">a</span> software developer and cybersecurity enthusiast with a passion for technology, creativity, and constant learning.</p>
+
+    <script>
+        const age = Math.floor((Date.now() - 1148169600000) / (365.25 * 24 * 60 * 60 * 1000));
+        const article = age === 8 || age === 11 || age === 18 || (age >= 80 && age <= 89) ? 'an' : 'a';
+        document.getElementById('age-text')!.textContent = `${article} ${age}-year-old`;
+    </script>
 
     <p>I specialise in <a href="/developer">software development and cybersecurity</a>, and I'm always exploring new technologies, tools, and ideas. Whether I'm building full-stack apps or diving deep into system security, I love solving problems that matter and learning something new every step of the way.</p>
 
@@ -18,7 +24,7 @@ import ContentLayout from '../layouts/ContentLayout.astro';
 
     <p>I believe in making the most of every opportunity, taking smart risks, and doing things that push me forward, whether it's a new project, a side hustle, or something completely out of my comfort zone.</p>
 
-    <p>If you want to talk tech, collaborate, or just say hi, feel free to <a href="mailto:contact@joeymanani.com">drop me an email</a>.</p>
+    <p>If you want to talk tech, collaborate, or just say hi, <a href="https://contact.theflyingrat.com">contact me here</a>!</p>
 
     <p>Prefer encrypted comms? You can grab my public PGP key <a href="https://cdn.theflyingrat.com/files/public.asc" rel="noopener noreferrer">here</a>.</p>
 </ContentLayout>
