@@ -24,10 +24,10 @@ if (currentDateEl) currentDateEl.textContent = dateString;
 
 // Bottom button click handlers
 document.getElementById('contact')?.parentElement?.addEventListener('click', () => {
-  window.location.href = 'mailto:contact@joeymanani.com';
+  window.location.href = 'https://contact.theflyingrat.com';
 });
 document.getElementById('links')?.parentElement?.addEventListener('click', () => {
-  document.location.href = 'https://tfrs.link/links';
+  document.location.href = 'https://links.joeymanani.com';
 });
 document.getElementById('skip-button')?.parentElement?.addEventListener('click', () => {
   document.location.href = '/home';
