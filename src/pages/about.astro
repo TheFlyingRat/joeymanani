@@ -8,6 +8,26 @@ import ContentLayout from '../layouts/ContentLayout.astro';
     prevHref="/developer"
     nextHref="/experience"
 >
+    <script
+        slot="head"
+        type="application/ld+json"
+        set:html={JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Joey Manani',
+            alternateName: 'TheFlyingRat',
+            url: 'https://joeymanani.com',
+            jobTitle: 'Software Developer',
+            description: 'Software developer and cybersecurity enthusiast.',
+            knowsAbout: ['Software Development', 'Cybersecurity', 'Web Development'],
+            sameAs: [
+                'https://theflyingrat.com',
+                'https://blog.joeymanani.com',
+                'https://links.joeymanani.com',
+            ],
+        })}
+    />
+
     <p>Hello! I'm Joey Manani, <span id="age-text">a</span> software developer and cybersecurity enthusiast with a passion for technology, creativity, and constant learning.</p>
 
     <script>

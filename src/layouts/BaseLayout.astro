@@ -10,6 +10,9 @@ interface Props {
   bodyClass?: string;
   noFoucTransition?: boolean;
   viewport?: string;
+  ogType?: 'website' | 'article' | 'profile';
+  image?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -19,20 +22,47 @@ const {
   bodyClass,
   noFoucTransition = false,
   viewport = 'width=device-width, initial-scale=1.0',
+  ogType = 'website',
+  image = '/og-image.png',
+  noindex = false,
 } = Astro.props;
+
+const SITE = 'https://joeymanani.com';
+const cleanPath = Astro.url.pathname
+  .replace(/\/index\.html$/, '/')
+  .replace(/\.html$/, '');
+const canonical = new URL(cleanPath || '/', SITE).href;
+const ogImage = new URL(image, SITE).href;
+const fullTitle = title === 'Joey Manani' ? title : `${title} — Joey Manani`;
 ---
 
 <!doctype html>
 <html lang="en">
 <head>
-    <title>{title}</title>
+    <title>{fullTitle}</title>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="/favicon.png">
     <meta name="viewport" content={viewport}>
-    <meta name="name" content={title}>
     <meta name="description" content={description}>
     <meta name="keywords" content="TheFlyingRat, Joey M, Software Developer, Web Development, Scripting languages, The, Flying, Rat, socials, youtube, snapchat, github">
     <meta name="author" content="Joey Manani">
+    <meta name="theme-color" content="#121212">
+    {noindex && <meta name="robots" content="noindex, follow">}
+    <link rel="canonical" href={canonical}>
+
+    <meta property="og:type" content={ogType}>
+    <meta property="og:site_name" content="Joey Manani">
+    <meta property="og:title" content={fullTitle}>
+    <meta property="og:description" content={description}>
+    <meta property="og:url" content={canonical}>
+    <meta property="og:image" content={ogImage}>
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={fullTitle}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:image" content={ogImage}>
+
     <style is:inline>
         body {
             background-color: #121212;
@@ -40,6 +70,7 @@ const {
             transition: opacity 600ms;
         }
     </style>
+    <noscript><style>body{opacity:1!important;transition:none!important;overflow:auto!important}</style></noscript>
     {noFoucTransition && (
         <style is:inline>
             body { transition: none; overflow: hidden; }
