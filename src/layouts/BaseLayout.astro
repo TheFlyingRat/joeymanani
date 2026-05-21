@@ -70,7 +70,6 @@ const fullTitle = title === 'Joey Manani' ? title : `${title} — Joey Manani`;
             transition: opacity 600ms;
         }
     </style>
-    <noscript><style>body{opacity:1!important;transition:none!important;overflow:auto!important}</style></noscript>
     {noFoucTransition && (
         <style is:inline>
             body { transition: none; overflow: hidden; }
@@ -81,6 +80,7 @@ const fullTitle = title === 'Joey Manani' ? title : `${title} — Joey Manani`;
     <slot name="head" />
 </head>
 <body id={bodyId} class={bodyClass}>
+    <noscript><style>body{opacity:1!important;transition:none!important;overflow:auto!important}</style></noscript>
     <slot />
     <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b3b04857a4f7456d84c29d92268a8438"}'></script>
 </body>
